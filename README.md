@@ -19,3 +19,15 @@ Later Steps:
 [ ] 2. Connect the front end to the backend via sockets. JavaScript -> Java
 
 
+
+Notes for Website <---> Server (backend) communication
+1. Do we use sockets for communication? 
+   This would involve the frequent communication of persistent sockets.
+
+2. Create temporary sockets sending json objects back and forth for details? 
+
+
+
+
+
+
