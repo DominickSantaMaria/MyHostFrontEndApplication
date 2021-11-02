@@ -148,4 +148,14 @@ html {
    </div>
 
   </div>
+
+    <script>
+        let restaurants = document.querySelectorAll('.btns li');
+
+        restaurants.forEach((item, index) => {
+            item.addEventListener('click', (event) => {
+                window.location = "tablemap.html";
+            });
+        });
+    </script>
 </html>
