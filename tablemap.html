@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+<div class="header">
+  <h1>MyHost</h1>
+</div>
+
+<div class="row">
+
+  <div class="col-6 col-s-9">
+    <h2>Ducksworth's Taphouse and Grill</h2>
+      
+      <ul class="tableGuide">
+      <h3>Table Guide</h3>
+          <li>
+              <div class="table available"></div>
+              <small>Available</small>
+          </li>
+          <li>
+              <div class="table unavailable"></div>
+              <small>Unavailable</small>
+          </li>
+      </ul>
+
+
+      <div class="tableDisplay">
+
+          <table class="layout">
+              <!--Row 1-->
+              <tr>
+                  <td>
+                      <div class="cornerBooth">Corner Booth</div>
+                  </td>
+                  <td style="vertical-align: top">
+                      <div class="longTable">Booth</div>
+                  </td>
+                  <td style="vertical-align: top">
+                      <div class="longTable">Booth</div>
+                  </td>
+                  <td style="vertical-align: top">
+                      <div class="longTable">Booth</div>
+                  </td>
+                  <td style="vertical-align: top">
+                      <div class="longTable">Booth</div>
+                  </td>
+                  <td style="vertical-align: top">
+                      <div class="longTable">Booth</div>
+                  </td>
+                  <td>
+                      <div class="cornerBooth">Corner Booth</div>
+                  </td>
+              </tr>
+              <!--Row 2-->
+              <tr>
+                  <td>
+                      <div class="roundTable">Table</div>
+                  </td>
+                  <td align="right">
+                      <div class="squareTable">Table</div>
+                  </td>
+                  <td>
+                      <div class="longTable">Table</div>
+                  </td>
+                  <td>
+                      <div class="longTable">Table</div>
+                  </td>
+                  <td>
+                      <div class="longTable">Table</div>
+                  </td>
+                  <td>
+                      <div class="squareTable">Table</div>
+                  </td>
+                  <td align="right">
+                      <div class="roundTable">Table</div>
+                  </td>
+              </tr>
+              <!--Row 3-->
+              <tr>
+                  <td>
+                      <div class="roundTable">Table</div>
+                  </td>
+                  <td align="right">
+                      <div class="squareTable">Table</div>
+                  </td>
+                  <td>
+                      <div class="longTable">Table</div>
+                  </td>
+                  <td>
+                      <div class="longTable">Table</div>
+                  </td>
+                  <td>
+                      <div class="longTable">Table</div>
+                  </td>
+                  <td>
+                      <div class="squareTable">Table</div>
+                  </td>
+                  <td align="right">
+                      <div class="roundTable">Table</div>
+                  </td>
+              </tr>
+              <!--Row 4-->
+              <tr>
+                  <td>
+                      <div class="roundTable">Table</div>
+                  </td>
+                  <td colspan="5"></td>
+                  <td align="right">
+                      <div class="roundTable">Table</div>
+                  </td>
+              </tr>
+          </table>
+      </div>
+
+  </div>
+</div>
+
+<script>
+
+    //Corner booth function
+    $(function() {
+        $("div.cornerBooth").on("click", function(event){
+            $(this).css('background-color', ' #A020F0');
+        });
+    });
+
+    //Long table function
+    $(function() {
+        $("div.longTable").on("click", function(event){
+            $(this).css('background-color', ' #A020F0');
+        });
+    });
+
+    //Round table function
+    $(function() {
+        $("div.roundTable").on("click", function(event){
+            $(this).css('background-color', ' #A020F0');
+        });
+    });
+
+    //Square table function
+    $(function() {
+        $("div.squareTable").on("click", function(event){
+            $(this).css('background-color', ' #A020F0');
+        });
+    });
+
+
+</script>
+
+</body>
+</html>

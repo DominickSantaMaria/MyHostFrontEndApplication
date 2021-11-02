@@ -139,20 +139,20 @@ html {
 </body>
 
 <script>
-let listItems = document.querySelectorAll('.btns li');
+    let listItems = document.querySelectorAll('.btns li');
 
-listItems.forEach((item, index) => {
-  item.addEventListener('click', (event) => {
-    if (event.currentTarget.innerHTML == "Login") {
-      alert(`${event.currentTarget.innerHTML} item was click`);
-      window.location = "login.html"    // NEED TO ACTUALLY CODE LOGIN DETAILS 
-    }
-    if (event.currentTarget.innerHTML == "Take me back") {
-      //alert(`${event.currentTarget.innerHTML} item was click`);
-      window.location = "home.html"     // TAKE BACK TO HOME PAGE
-    }
-  });
-});
+    listItems.forEach((item, index) => {
+      item.addEventListener('click', (event) => {
+        if (event.currentTarget.innerHTML == "Login") {
+          alert(`${event.currentTarget.innerHTML} item was click`);
+          window.location = "login.html"    // NEED TO ACTUALLY CODE LOGIN DETAILS 
+        }
+        if (event.currentTarget.innerHTML == "Take me back") {
+          //alert(`${event.currentTarget.innerHTML} item was click`);
+          window.location = "home.html"     // TAKE BACK TO HOME PAGE
+        }
+      });
+    });
 
 </script>
 </html>
