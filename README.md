@@ -6,6 +6,7 @@ Started login screen. The webpage still looks good when resized and appears to b
 
 01-02 Nov 2021
 Added User home screen, basic table layout, and jquery functionality
+Added tableTemplate.html for table selection, passing selected table to tableTemplate functionality, converted jquery back to javascript functionality
 
 Next Steps:
 1. Create user home screen to see restaurants/reservations.

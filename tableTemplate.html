@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+<body>
+
+    <div class="header">
+        <h1>MyHost</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-6 col-s-9">
+            <h2 id="tableDisplay">N/A Table</h2>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function () {
+            var tableSelected = sessionStorage.getItem("table");
+
+            document.getElementById("tableDisplay").innerHTML = tableSelected;
+        }
+    </script>
+</body>
+</html>
