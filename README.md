@@ -4,6 +4,9 @@ Front End code for MyHost application project
 30 Oct 2021
 Started login screen. The webpage still looks good when resized and appears to be compatible with mobile.
 
+01-02 Nov 2021
+Added User home screen, basic table layout, and jquery functionality
+
 Next Steps:
 1. Create user home screen to see restaurants/reservations.
 2. Figure out how to make interactive pages for the table configurations / choose table in restaurant.
