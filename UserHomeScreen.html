@@ -86,6 +86,26 @@ html {
   font-size: 12px;
   padding: 15px;
 }
+.btns2{
+  position:absolute;
+  top: 182px;;
+  margin-left: 1000px;
+  width: 1200px; 
+}
+
+.btns{
+  position:absolute;
+  top: 262px;;
+  margin-left: 579px;
+  width: 1200px;
+}
+
+.head2{
+   margin-left:55px;
+}
+.head1{
+  margin-left:600px;
+}
 
 /* For mobile phones: */
 [class*="col-"] {
@@ -125,6 +145,7 @@ html {
 .ulBorder{
     border:10px solid #a1a1a1
 }
+
 </style>
 </head>
 <body>
@@ -133,7 +154,7 @@ html {
     <div class="header">
         <ul class="navBar">
             <li><h1>MyHost</h1></li>
-            <li style="float:right"><button class="headerButton" align="right">Logout</button></li>
+            <li style="float:right"><button class="headerButton" align="right">Logout</button><a href="home.html"></a> </li>
             <li style="float:right"><button class="headerButton" align="right">Account</button></li>
         </ul>
     </div>
@@ -142,7 +163,7 @@ html {
 <br>
 <br>
 <br>
-    <h1>My Reservations</h1>
+    <h1 class="head1">My Reservations</h1>
         <div class="btns">
 
         <div class="col-s-3 menu">
@@ -153,10 +174,11 @@ html {
                 <li>Past Reservations</li>
             </ul>
         </div>
-        </div>
+        </div> 
 
-    <h1>Restaurants</h1>
-        <div class="btns">
+        
+        <div class="btns2">
+          <h1 class="head2">Restaurants</h1>
          <div class="col-s-3 menu">
             <ul>
                 <li>Ducksworth Taphouse and Grill</li>
