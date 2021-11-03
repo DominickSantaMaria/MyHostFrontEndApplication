@@ -249,8 +249,6 @@ html {
     display: flex;
 }
 
-
-
 @media only screen and (min-width: 600px) {
     /* For tablets: */
     .col-s-1 {

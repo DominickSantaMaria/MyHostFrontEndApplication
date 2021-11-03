@@ -40,17 +40,23 @@
             <table>
                 <tr>
                     <td>
-                        <button class="button tempTable" id="Yes">Choose this table!</button>
+                        <button class="button tempTable" id="Yes" onclick="chooseTable()">Choose this table!</button>
                     </td>
                     <td>
                         <button class="button tempTable" id="No" onclick="goBack()">I've changed my mind!</button>
+                    </td>
+                    <td>
+                        <button class="button tempTable" onclick="popupTest()" id="test">Test Popup</button>
                     </td>
                 </tr>
             </table>
         </div>
     </div>
 
+    
     <script>
+        
+
         window.onload = function () {
             var tableSelected = sessionStorage.getItem("table");
             document.getElementById("tableDisplay").innerHTML = "Selection: " + tableSelected;
@@ -89,10 +95,26 @@
 
         function chooseTable() {
             //Code table selection notification
+            if (confirm("Table reserved! Click OK to return to home. Cancel to close popup.")) {
+                location.href = "UserHomeScreen.html";
+            } else {
+
+            }
         }
 
         function goBack() {
             location.href = "tablemap.html";
+        }
+
+        function popupTest() {
+            var testText;
+            if (confirm("Pop test success? Ok for yes, Cancel for no")) {
+                txt = "Test successful";
+            } else {
+                txt = "Test failed";
+            }
+
+            document.getElementById("test").innerHTML = txt;
         }
     </script>
 </body>
