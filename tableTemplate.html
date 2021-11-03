@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+<body>
+
+    <div class="header">
+        <h1>MyHost</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-6 col-s-9">
+            <h2 id="tableDisplay">N/A Table</h2>
+
+            <div>
+                <table class="display">
+                    <tr>
+                        <td>
+                            <p id="seats"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            <div class="" id="diagram" style="transform: scale(1)"></div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+               
+
+            <p>We're happy you chose this table! It should be ready for you in about [placeholder] minutes.</p>
+            <p>Would you like to stick with this table, or choose a different one?</p>
+            <table>
+                <tr>
+                    <td>
+                        <button class="button tempTable" id="Yes">Choose this table!</button>
+                    </td>
+                    <td>
+                        <button class="button tempTable" id="No" onclick="goBack()">I've changed my mind!</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function () {
+            var tableSelected = sessionStorage.getItem("table");
+            document.getElementById("tableDisplay").innerHTML = "Selection: " + tableSelected;
+
+            var type = sessionStorage.getItem("type");
+
+            //Corner table
+            if (type.includes('cornerBooth') == true) {
+                document.getElementById("seats").innerHTML = "This booth has 5 seats.";
+                document.getElementById("diagram").className = "cornerBooth";
+            }
+            //Booth
+            else if (type.includes('longTable') == true && tableSelected.includes('Booth') == true) {
+                document.getElementById("seats").innerHTML = "This booth has 4 seats.";
+                document.getElementById("diagram").className = "longTable";
+            }
+            //Long table
+            else if (type.includes('longTable') == true) {
+                document.getElementById("seats").innerHTML = "This table has 6 seats.";
+                document.getElementById("diagram").className = "longTable";
+            }
+            //Round table
+            else if (type.includes('roundTable') == true) {
+                document.getElementById("seats").innerHTML = "This table has 4 seats.";
+                document.getElementById("diagram").className = "roundTable";
+            }
+            //Square table
+            else if (type.includes('squareTable') == true) {
+                document.getElementById("seats").innerHTML = "This table has 2 seats.";
+                document.getElementById("diagram").className = "squareTable";
+            }
+            else {
+                //Placeholder if more table types need to be added
+            }
+        }
+
+        function chooseTable() {
+            //Code table selection notification
+        }
+
+        function goBack() {
+            location.href = "tablemap.html";
+        }
+    </script>
+</body>
+</html>

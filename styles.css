@@ -63,11 +63,32 @@ html {
     width: 100%;
 }
 
+.button {
+    background-color: #FB8064;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
 .table{
     background-color: #ccc;
     height: 20px;
     width: 40px;
     margin: 5px;
+}
+
+.display {
+    background-color: antiquewhite;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #777;
+    table-layout: auto;
+    align-content: center;
+    overflow: visible;
 }
 
 .available{
@@ -204,6 +225,8 @@ html {
 .row{
     display: flex;
 }
+
+
 
 @media only screen and (min-width: 600px) {
     /* For tablets: */
