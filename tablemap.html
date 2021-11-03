@@ -137,6 +137,7 @@
                 var tableInfo = table.innerHTML;
                 
                 sessionStorage.setItem("table", tableInfo);
+                sessionStorage.setItem("type", "cornerBooth");
                 location.href = "tableTemplate.html";
             });
         });
@@ -144,9 +145,10 @@
         //Long table & booth select function
         Array.from(longTables).forEach(table => {
             table.addEventListener('click', () => {
-                var tableInfo = table.innerHTML;
-                
+                var tableInfo = table.innerHTML;      
+
                 sessionStorage.setItem("table", tableInfo);
+                sessionStorage.setItem("type", "longTable");
                 location.href = "tableTemplate.html";
             });
         });
@@ -157,6 +159,7 @@
                 var tableInfo = table.innerHTML;
                 
                 sessionStorage.setItem("table", tableInfo);
+                sessionStorage.setItem("type", "roundTable");
                 location.href = "tableTemplate.html";
             });
         });
@@ -167,6 +170,7 @@
                 var tableInfo = table.innerHTML;
                 
                 sessionStorage.setItem("table", tableInfo);
+                sessionStorage.setItem("type", "squareTable");
                 location.href = "tableTemplate.html";
             });
         });

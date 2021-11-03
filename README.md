@@ -8,6 +8,10 @@ Started login screen. The webpage still looks good when resized and appears to b
 Added User home screen, basic table layout, and jquery functionality
 Added tableTemplate.html for table selection, passing selected table to tableTemplate functionality, converted jquery back to javascript functionality
 
+03 Nov 2021 (at 1 am...)
+Added functionality to tableTemplate.html using sessionStorage to pass table selection information to change template to selected table. So far, only the table displayed, table name,
+and how many seats the selection has changed. Need to create a dyanmic change for the placeholder time and adjust table sizing. Plan to code confirm table selection next.
+
 Next Steps:
 1. Create user home screen to see restaurants/reservations.
 2. Figure out how to make interactive pages for the table configurations / choose table in restaurant.
