@@ -100,9 +100,13 @@ html {
   .col-11 {width: 91.66%;}
   .col-12 {width: 100%;}
 }
+.ulBorder{
+    border:10px solid #a1a1a1
+}
 </style>
 </head>
 <body>
+
 
 
 </style>
@@ -111,43 +115,40 @@ html {
   <h1>MyHost</h1>
 </div>
 
-<style>
 
-
-</style>
-
-
+<br>
+<br>
+<br>
     <h1>My Reservations</h1>
         <div class="btns">
-        <div class="col-2 col-s-3 menu">
+
+        <div class="col-s-3 menu">
             <ul>
             <!--Not sure if we want to add a new page to display reservations or just have them listed somehow on the user homescreen-->
                 <li>Active Reservations</li>
+                <br>
+                <li>Past Reservations</li>
             </ul>
         </div>
-</div>
-<br>
-<br>
-<br>
+        </div>
 
     <h1>Restaurants</h1>
         <div class="btns">
-         <div class="col-2 col-s-3 menu">
+         <div class="col-s-3 menu">
             <ul>
-                <li>(Restaurant Name)</li>
+                <li>Ducksworth Taphouse and Grill</li>
                 <br>
-                <li>(Restaurant Name)</li>
+                <li>Chili's</li>
                 <br>
-                <li>(Restaurant Name)</li>
+                <li>Johnny Brusco's</li>
                 <br>
-                <li>(Restaurant Name)</li>
+                <li>Blacow</li>
                 <br>
-                <li>(Restaurant Name)</li>
+                <li>131 Main</li>
 
             </ul>
-   </div>
-
-  </div>
+        </div>
+         </div>
 
     <script>
         let restaurants = document.querySelectorAll('.btns li');
@@ -158,4 +159,10 @@ html {
             });
         });
     </script>
+
+
+
+
+
+
 </html>
