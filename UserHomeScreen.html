@@ -47,6 +47,28 @@ html {
   background-color: #0099cc;
 }
 
+.navBar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navBar li {
+  display: inline-block;
+  padding: 5px;
+  vertical-align: middle;
+}
+
+.headerButton {
+  background-color: antiquewhite;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
 
 .aside {
   background-color: #33b5e5;
@@ -111,9 +133,13 @@ html {
 
 </style>
 
-<div class="header">
-  <h1>MyHost</h1>
-</div>
+    <div class="header">
+        <ul class="navBar">
+            <li><h1>MyHost</h1></li>
+            <li style="float:right"><button class="headerButton" align="right">Logout</button></li>
+            <li style="float:right"><button class="headerButton" align="right">Account</button></li>
+        </ul>
+    </div>
 
 
 <br>
