@@ -181,7 +181,7 @@ html {
           <h1 class="head2">Restaurants</h1>
          <div class="col-s-3 menu">
             <ul>
-                <li>Ducksworth Taphouse and Grill</li>
+                <li>Ducksworths Taphouse and Grill</li>
                 <br>
                 <li>Chili's</li>
                 <br>
@@ -195,10 +195,17 @@ html {
         </div>
          </div>
 
-    <script>
-        let restaurants = document.querySelectorAll('.btns2 li');
+         <script>
+        let restaurants = document.querySelectorAll('.btns li');
 
         restaurants.forEach((item, index) => {
+            item.addEventListener('click', (event) => {
+                window.location = "ActiveReservations.html";
+            });
+        });
+        let reservations = document.querySelectorAll('.btns2 li');
+
+        reservations.forEach((item, index) => {
             item.addEventListener('click', (event) => {
                 window.location = "tablemap.html";
             });
