@@ -15,7 +15,7 @@ and how many seats the selection has changed. Need to create a dyanmic change fo
 Added nav bar that we can add more buttons if necessarily and css to go along. No functionality for the logout or account buttons yet.
 
 Next Steps:
-1. Create user home screen to see restaurants/reservations.
+1. Organize and develop created home screen
 2. Figure out how to make interactive pages for the table configurations / choose table in restaurant.
 3. Create booking screen for restaurant.
 4. Create web notification that a different table is available
