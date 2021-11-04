@@ -27,6 +27,9 @@ html {
   color: #ffffff;
   padding: 15px;
 }
+.header2{
+    left-align: 100px;
+}
 
 .menu ul {
   list-style-type: none;
@@ -92,19 +95,6 @@ html {
   margin-left: 800px;
   width: 1200px; 
 }
-.btns1{
-  position:absolute;
-  top: 310px;;
-  margin-left: 800px;
-  width: 1200px; 
-}
-.btns3{
-  position:absolute;
-  top: 357px;;
-  margin-left: 800px;
-  width: 1200px; 
-}
-
 
 .btns{
   position:absolute;
@@ -176,62 +166,43 @@ html {
 <br>
      
 
-        
+        <FRAMESET COLS="col-s-3 menu">
         <div class="btns2">
-          <h1 class="head2">Account Settings</h1>
+         <h1 class="header2">Active Reservations</h1>
          <div class="col-s-3 menu">
             <ul>
-                    <li>Change Username</li>
+                    <li>Duckworths Taphouse and Grill (11/5/2021, 6 people, 7:00pm EST)</li>
                     <br>
+                    <li>131 Main (11/15/2021, 4 people, 6:00pm EST)</li>
+                    <br>
+                    <li>Blacow (12/1/2021, 2 people, 7:30pm EST)</li>
+                    
+                    <div class="btns">
+                    <div class="col-s-3 menu">
+                    <ul>
+                    <li>Back to Home Screen</li>
+                     </ul>
+                      </div>
+                       </div>
             </ul>
         </div>
-      </div>
+         </div>
+         </FRAMESET>
 
-         <div class="btns1">
-         <div class="col-s-3 menu">
-          <ul>
-                  <li>Change Password</li>    
-          </ul>
-      </div>
-       </div>
-
-       <div class="btns3">
-        <div class="col-s-3 menu">
-         <ul>
-                 <li>Update Profile Picture</li>    
-         </ul>
-     </div>
-      </div>
-     
 
          
-       <script>
-        let Settings = document.querySelectorAll('.btns1 li');
-      
+
+         
+
+    <script>
+        let Settings = document.querySelectorAll('.btns li');
+
         Settings.forEach((item, index) => {
             item.addEventListener('click', (event) => {
-                window.location = "ChangePassword.html";
-            });
-        });
-      
-        let settings1 = document.querySelectorAll('.btns2 li');
-
-        settings1.forEach((item, index) => {
-            item.addEventListener('click', (event) => {
-                window.location = "ChangeUsername.html";
-            });
-        });
-
-        let settings2 = document.querySelectorAll('.btns3 li');
-
-        settings2.forEach((item, index) => {
-            item.addEventListener('click', (event) => {
-                window.location = "updateProfilePicture.html";
+                window.location = "UserHomeScreen.html";
             });
         });
     </script>
-
-
 
 
 
