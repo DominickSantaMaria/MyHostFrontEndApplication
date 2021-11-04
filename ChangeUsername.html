@@ -147,6 +147,7 @@ html {
     border:10px solid #a1a1a1
 }
 
+
 </style>
 </head>
 <body>
@@ -154,8 +155,8 @@ html {
   <div class="header">
         <ul class="navBar">
             <li><h1>MyHost</h1></li>
-            <li style="float:right"><button class="headerButton" type=button><a href="home.html" align="right">Logout</button></a> </li>
-            <li style="float:right"><button class="headerButton" type=button><a href="account.html" align="right">Account</button></a></li>
+            <li style="float:right"><button class="headerButton" type=button><a href="home.html" style="text-decoration:none;"align="right">Logout</button></a> </li>
+            <li style="float:right"><button class="headerButton" type=button><a href="account.html" style="text-decoration:none;" align="right">Account</button></a></li>
         </ul>
     </div>
 
@@ -173,20 +174,21 @@ html {
      <div class="col-3 col-s-3 menu" size = "25">
           <ul>
             <li>Confirm Username</li>
+           
             <li>Back to Settings</li>
           
           </ul>
+          </div>
         </div>
         </div>
-</div>
 
 
 </body>
 
 <script>
-    let listItems = document.querySelectorAll('.btns li');
+    let confirmUserName = document.querySelectorAll('.btns2 li');
 
-    listItems.forEach((item, index) => {
+    confirmUserName.forEach((item, index) => {
       item.addEventListener('click', (event) => {
         if (event.currentTarget.innerHTML == "Confirm Username") {
           alert(`${event.currentTarget.innerHTML} item was click`);
@@ -195,7 +197,6 @@ html {
        
       });
     });
-
 </script>
 </html>
 
