@@ -17,7 +17,8 @@ Added pop up tests for table reservation page.
 
 07 Nov 2021
 -Added CSS grid to Table Template file to make customization easier. Also added a form for entering information for table and separate stylesheet for table template.
--Added login styles css file
+-Added login styles css file / updated login input css
+-Added sign up styles css file / updated sign up input css
 
 Next Steps:
 1. Organize and develop created home screen
