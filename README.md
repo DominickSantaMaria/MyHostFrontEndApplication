@@ -19,6 +19,7 @@ Added pop up tests for table reservation page.
 -Added CSS grid to Table Template file to make customization easier. Also added a form for entering information for table and separate stylesheet for table template.
 -Added login styles css file / updated login input css
 -Added sign up styles css file / updated sign up input css
+-Adjusted table template so max attribute of input for partySize to match max seats for table type selected
 
 Next Steps:
 1. Organize and develop created home screen

@@ -98,26 +98,31 @@
                 if (type.includes('cornerBooth') == true) {
                     document.getElementById("seats").innerHTML = "This booth has 5 seats.";
                     document.getElementById("diagram").className = "cornerBooth";
+                    document.getElementById("partySize").max = 5;
                 }
                 //Booth
                 else if (type.includes('longTable') == true && tableSelected.includes('Booth') == true) {
                     document.getElementById("seats").innerHTML = "This booth has 4 seats.";
                     document.getElementById("diagram").className = "longTable";
+                    document.getElementById("partySize").max = 4;
                 }
                 //Long table
                 else if (type.includes('longTable') == true) {
                     document.getElementById("seats").innerHTML = "This table has 6 seats.";
                     document.getElementById("diagram").className = "longTable";
+                    document.getElementById("partySize").max = 6;
                 }
                 //Round table
                 else if (type.includes('roundTable') == true) {
                     document.getElementById("seats").innerHTML = "This table has 4 seats.";
                     document.getElementById("diagram").className = "roundTable";
+                    document.getElementById("partySize").max = 4;
                 }
                 //Square table
                 else if (type.includes('squareTable') == true) {
                     document.getElementById("seats").innerHTML = "This table has 2 seats.";
                     document.getElementById("diagram").className = "squareTable";
+                    document.getElementById("partySize").max = 2;
                 }
                 else {
                     //Placeholder if more table types need to be added
