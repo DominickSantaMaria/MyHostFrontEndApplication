@@ -16,7 +16,8 @@ Added nav bar that we can add more buttons if necessarily and css to go along. N
 Added pop up tests for table reservation page.
 
 07 Nov 2021
-Added CSS grid to Table Template file to make customization easier. Also added a form for entering information for table and separate stylesheet for table template.
+-Added CSS grid to Table Template file to make customization easier. Also added a form for entering information for table and separate stylesheet for table template.
+-Added login styles css file
 
 Next Steps:
 1. Organize and develop created home screen

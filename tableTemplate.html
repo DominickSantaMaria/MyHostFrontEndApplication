@@ -36,7 +36,7 @@
                     <input type="text" id="name" name="name" placeholder="Group Name" />
                     <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" />
                     <input type="number" id="partySize" name="partySize" min="1" max="6" placeholder="Party Size" /><br />
-                    <input type="submit" value="Choose this table!" />
+                    <input type="submit" value="Choose this table!" onclick="chooseTable()" />
                 </form>
             </div>
             <div class="item5">
@@ -128,8 +128,6 @@
                 //Code table selection notification
                 if (confirm("Table reserved! Click OK to return to home. Cancel to close popup.")) {
                     location.href = "UserHomeScreen.html";
-                } else {
-
                 }
             }
 
