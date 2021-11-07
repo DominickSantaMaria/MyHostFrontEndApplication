@@ -13,7 +13,10 @@ Added functionality to tableTemplate.html using sessionStorage to pass table sel
 and how many seats the selection has changed. Need to create a dyanmic change for the placeholder time and adjust table sizing. Plan to code confirm table selection next.
 
 Added nav bar that we can add more buttons if necessarily and css to go along. No functionality for the logout or account buttons yet.
-Added pop up tests for table reservation page. 
+Added pop up tests for table reservation page.
+
+07 Nov 2021
+Added CSS grid to Table Template file to make customization easier. Also added a form for entering information for table and separate stylesheet for table template.
 
 Next Steps:
 1. Organize and develop created home screen

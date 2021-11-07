@@ -2,24 +2,22 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="styles.css">
+        <link rel="stylesheet" type="text/css" href="tableTempStyles.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
-<body>
+    <body>
 
-    <div class="header">
-        <ul class="navBar">
-            <li><h1>MyHost</h1></li>
-            <li style="float:right"><button class="headerButton" type=button><a href="home.html" style="text-decoration:none;" align="right">Logout</button></a> </li>
-            <li style="float:right"><button class="headerButton" type=button><a href="account.html" style="text-decoration:none;" align="right">Account</button></a></li>
-        </ul>
-    </div>
+        <div class="header">
+            <ul class="navBar">
+                <li><h1>MyHost</h1></li>
+                <li style="float:right"><button class="headerButton" type=button><a href="home.html" style="text-decoration:none;" align="right">Logout</button></a> </li>
+                <li style="float:right"><button class="headerButton" type=button><a href="account.html" style="text-decoration:none;" align="right">Account</button></a></li>
+            </ul>
+        </div>
 
-    <div class="row">
-        <div class="col-6 col-s-9">
-            <h2 id="tableDisplay">N/A Table</h2>
-
-            <div>
+        <div class="grid-container">
+            <div class="item1"><h3 id="tableDisplay">N/A Table</h3></div>
+            <div class="item2">
                 <table class="display">
                     <tr>
                         <td>
@@ -33,89 +31,122 @@
                     </tr>
                 </table>
             </div>
-               
-
-            <p>We're happy you chose this table! It should be ready for you in about [placeholder] minutes.</p>
-            <p>Would you like to stick with this table, or choose a different one?</p>
-            <table>
-                <tr>
-                    <td>
-                        <button class="button tempTable" id="Yes" onclick="chooseTable()">Choose this table!</button>
-                    </td>
-                    <td>
-                        <button class="button tempTable" id="No" onclick="goBack()">I've changed my mind!</button>
-                    </td>
-                    <td>
-                        <button class="button tempTable" onclick="popupTest()" id="test">Test Popup</button>
-                    </td>
-                </tr>
-            </table>
+            <div class="item4">
+                <form>
+                    <input type="text" id="name" name="name" placeholder="Group Name" />
+                    <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" />
+                    <input type="number" id="partySize" name="partySize" min="1" max="6" placeholder="Party Size" /><br />
+                    <input type="submit" value="Choose this table!" />
+                </form>
+            </div>
+            <div class="item5">
+                <button class="button tempTable" id="No" onclick="goBack()">I've changed my mind!</button>
+            </div>
         </div>
-    </div>
 
-    
-    <script>
-        
 
-        window.onload = function () {
-            var tableSelected = sessionStorage.getItem("table");
-            document.getElementById("tableDisplay").innerHTML = "Selection: " + tableSelected;
+        <!--Keeping what I had before in case new one is voted against-->
+        <!--<div class="row">
+            <div class="col-6 col-s-9">
+                <h2 id="tableDisplay">N/A Table</h2>
 
-            var type = sessionStorage.getItem("type");
+                <div>
+                    <table class="display">
+                        <tr>
+                            <td>
+                                <p id="seats"></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center">
+                                <div class="" id="diagram" style="transform: scale(1)"></div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
 
-            //Corner table
-            if (type.includes('cornerBooth') == true) {
-                document.getElementById("seats").innerHTML = "This booth has 5 seats.";
-                document.getElementById("diagram").className = "cornerBooth";
+
+                <p>We're happy you chose this table! It should be ready for you in about [placeholder] minutes.</p>
+                <p>Would you like to stick with this table, or choose a different one?</p>
+                <table>
+                    <tr>
+                        <td>
+                            <button class="button tempTable" id="Yes" onclick="chooseTable()">Choose this table!</button>
+                        </td>
+                        <td>
+                            <button class="button tempTable" id="No" onclick="goBack()">I've changed my mind!</button>
+                        </td>
+                        <td>
+                            <button class="button tempTable" onclick="popupTest()" id="test">Test Popup</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>-->
+
+
+        <script>
+
+
+            window.onload = function () {
+                var tableSelected = sessionStorage.getItem("table");
+                document.getElementById("tableDisplay").innerHTML = "Selection: " + tableSelected;
+
+                var type = sessionStorage.getItem("type");
+
+                //Corner table
+                if (type.includes('cornerBooth') == true) {
+                    document.getElementById("seats").innerHTML = "This booth has 5 seats.";
+                    document.getElementById("diagram").className = "cornerBooth";
+                }
+                //Booth
+                else if (type.includes('longTable') == true && tableSelected.includes('Booth') == true) {
+                    document.getElementById("seats").innerHTML = "This booth has 4 seats.";
+                    document.getElementById("diagram").className = "longTable";
+                }
+                //Long table
+                else if (type.includes('longTable') == true) {
+                    document.getElementById("seats").innerHTML = "This table has 6 seats.";
+                    document.getElementById("diagram").className = "longTable";
+                }
+                //Round table
+                else if (type.includes('roundTable') == true) {
+                    document.getElementById("seats").innerHTML = "This table has 4 seats.";
+                    document.getElementById("diagram").className = "roundTable";
+                }
+                //Square table
+                else if (type.includes('squareTable') == true) {
+                    document.getElementById("seats").innerHTML = "This table has 2 seats.";
+                    document.getElementById("diagram").className = "squareTable";
+                }
+                else {
+                    //Placeholder if more table types need to be added
+                }
             }
-            //Booth
-            else if (type.includes('longTable') == true && tableSelected.includes('Booth') == true) {
-                document.getElementById("seats").innerHTML = "This booth has 4 seats.";
-                document.getElementById("diagram").className = "longTable";
-            }
-            //Long table
-            else if (type.includes('longTable') == true) {
-                document.getElementById("seats").innerHTML = "This table has 6 seats.";
-                document.getElementById("diagram").className = "longTable";
-            }
-            //Round table
-            else if (type.includes('roundTable') == true) {
-                document.getElementById("seats").innerHTML = "This table has 4 seats.";
-                document.getElementById("diagram").className = "roundTable";
-            }
-            //Square table
-            else if (type.includes('squareTable') == true) {
-                document.getElementById("seats").innerHTML = "This table has 2 seats.";
-                document.getElementById("diagram").className = "squareTable";
-            }
-            else {
-                //Placeholder if more table types need to be added
-            }
-        }
 
-        function chooseTable() {
-            //Code table selection notification
-            if (confirm("Table reserved! Click OK to return to home. Cancel to close popup.")) {
-                location.href = "UserHomeScreen.html";
-            } else {
+            function chooseTable() {
+                //Code table selection notification
+                if (confirm("Table reserved! Click OK to return to home. Cancel to close popup.")) {
+                    location.href = "UserHomeScreen.html";
+                } else {
 
-            }
-        }
-
-        function goBack() {
-            location.href = "tablemap.html";
-        }
-
-        function popupTest() {
-            var testText;
-            if (confirm("Pop test success? Ok for yes, Cancel for no")) {
-                txt = "Test successful";
-            } else {
-                txt = "Test failed";
+                }
             }
 
-            document.getElementById("test").innerHTML = txt;
-        }
-    </script>
-</body>
+            function goBack() {
+                location.href = "tablemap.html";
+            }
+
+            function popupTest() {
+                var testText;
+                if (confirm("Pop test success? Ok for yes, Cancel for no")) {
+                    txt = "Test successful";
+                } else {
+                    txt = "Test failed";
+                }
+
+                document.getElementById("test").innerHTML = txt;
+            }
+        </script>
+    </body>
 </html>
