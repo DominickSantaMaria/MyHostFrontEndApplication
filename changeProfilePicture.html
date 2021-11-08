@@ -27,9 +27,6 @@ html {
   color: #ffffff;
   padding: 15px;
 }
-.header2{
-    left-align: 100px;
-}
 
 .menu ul {
   list-style-type: none;
@@ -91,7 +88,7 @@ html {
 }
 .btns2{
   position:absolute;
-  top: 400px;;
+  top: 325px;;
   margin-left: 0px;
   width: 1200px; 
 }
@@ -105,6 +102,9 @@ html {
 
 .head2{
    margin-left:20px;
+}
+.head1{
+   margin-left:12px;
 }
 
 
@@ -147,6 +147,7 @@ html {
     border:10px solid #a1a1a1
 }
 
+
 </style>
 </head>
 <body>
@@ -154,40 +155,42 @@ html {
   <div class="header">
         <ul class="navBar">
             <li><h1>MyHost</h1></li>
-            <li style="float:right"><button class="headerButton" type=button><a href="home.html" style="text-decoration:none;" align="right">Logout</button></a> </li>
+            <li style="float:right"><button class="headerButton" type=button><a href="home.html" style="text-decoration:none;"align="right">Logout</button></a> </li>
             <li style="float:right"><button class="headerButton" type=button><a href="account.html" style="text-decoration:none;" align="right">Account</button></a></li>
         </ul>
     </div>
+
 <div class="row">
 
-    <h1>Change Password</h1>
-    <div class="container">
-      <input type="text" size ="25" style = "height:60px; font-size:20pt;" placeholder="New Password" name="newPassword" required><br><br>
-      <input type="text" size ="25" style = "height:60px; font-size:20pt;" placeholder="Confirm New Password" name="newPassword" required><br><br>
+    <h1 class="head1">Change Profile Picture</h1>
+    <div class="col-s-3 menu">
+      <input class="file-upload-input" size ="25" style = "height:40px; font-size:10pt;" type="file" onchange="readURL(this)" accept="Image/*"><br><br>
       <label>
       </label><br><br>
       
     </div>
-    <div class="btns2" size = "25">
-        <div class="col-3 col-s-3 menu" size = "25">
+
+  <div class="btns2" size = "25">
+     <div class="col-3 col-s-3 menu" size = "25">
           <ul>
-            <li>Confirm Password</li>
+            <li>Confirm Profile Update</li>
+           
             <li>Back to Settings</li>
           
           </ul>
+          </div>
         </div>
         </div>
-</div>
 
 
 </body>
 
 <script>
-    let listItems = document.querySelectorAll('.btns2 li');
+    let confirmUserName = document.querySelectorAll('.btns2 li');
 
-    listItems.forEach((item, index) => {
+    confirmUserName.forEach((item, index) => {
       item.addEventListener('click', (event) => {
-        if (event.currentTarget.innerHTML == "Confirm Password") {
+        if (event.currentTarget.innerHTML == "Confirm Profile Picture") {
           alert(`${event.currentTarget.innerHTML} item was click`);
           window.location = "UserHomeScreen.html"    // NEED TO ACTUALLY CODE LOGIN DETAILS 
         }
@@ -201,9 +204,11 @@ html {
                 window.location = "account.html";
             });
         });
-
 </script>
 </html>
+
+
+
 
 
 
