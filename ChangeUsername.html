@@ -197,6 +197,13 @@ html {
        
       });
     });
+
+    let Settings = document.querySelectorAll('.btns2 li');
+    Settings.forEach((item, index) => {
+            item.addEventListener('click', (event) => {
+                window.location = "account.html";
+            });
+        });
 </script>
 </html>
 
