@@ -24,9 +24,9 @@ Added pop up tests for table reservation page.
 6. Updated table template size display from scale(1) --> scale(1.5)
 
 Next Steps:
-1. Organize and develop created home screen
+1. Organize and develop created home screen (In Progress)
 2. Figure out how to make interactive pages for the table configurations / choose table in restaurant.
-3. Create booking screen for restaurant.
+3. Create booking screen for restaurant. (DONE)
 4. Create web notification that a different table is available
  . More user stuff
 x. Create admin view for managing tables
