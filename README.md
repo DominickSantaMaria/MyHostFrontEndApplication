@@ -23,6 +23,9 @@ Added pop up tests for table reservation page.
 5. Added error handling on booking details for phone number, and option to opt in or out of automatic table swapping
 6. Updated table template size display from scale(1) --> scale(1.5)
 
+08 Nov 2021
+Added admin view home page and some basic information. Added buttons to navigation bar to switch between admin view and user view for placeholder purposes.
+
 Next Steps:
 1. Organize and develop created home screen (In Progress)
 2. Figure out how to make interactive pages for the table configurations / choose table in restaurant.
