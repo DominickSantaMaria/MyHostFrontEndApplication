@@ -26,17 +26,19 @@
                     </tr>
                     <tr>
                         <td align="center">
-                            <div class="" id="diagram" style="transform: scale(1)"></div>
+                            <div class="" id="diagram" style="transform: scale(1.5)"></div>
                         </td>
                     </tr>
                 </table>
             </div>
             <div class="item4">
-                <form>
-                    <input type="text" id="name" name="name" placeholder="Group Name" />
-                    <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" />
-                    <input type="number" id="partySize" name="partySize" min="1" max="6" placeholder="Party Size" /><br />
-                    <input type="submit" value="Choose this table!" />
+                <form id="reservationForm">
+                    <input type="text" id="name" name="name" placeholder="Group Name" required/>
+                    <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Phone Number 123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/>
+                    <input type="number" id="partySize" name="partySize" min="1" max="6" placeholder="Party Size" required/><br />
+                    <input type="checkbox" id="optIn" name="optIn" value="Yes" />
+                    <label for="optIn">Seat my party sooner if a different table is available</label><br />
+                    <button class="button tempTable" id="Yes" onclick="chooseTable()">Choose this table!</button>
                 </form>
             </div>
             <div class="item5">
@@ -87,56 +89,68 @@
 
         <script>
 
-
+            //Window Load
             window.onload = function () {
+                //Getting session data of table item
                 var tableSelected = sessionStorage.getItem("table");
                 document.getElementById("tableDisplay").innerHTML = "Selection: " + tableSelected;
 
+                //Getting session data of type item
                 var type = sessionStorage.getItem("type");
 
                 //Corner table
                 if (type.includes('cornerBooth') == true) {
                     document.getElementById("seats").innerHTML = "This booth has 5 seats.";
                     document.getElementById("diagram").className = "cornerBooth";
+                    document.getElementById("partySize").max = 5;
                 }
                 //Booth
                 else if (type.includes('longTable') == true && tableSelected.includes('Booth') == true) {
                     document.getElementById("seats").innerHTML = "This booth has 4 seats.";
                     document.getElementById("diagram").className = "longTable";
+                    document.getElementById("partySize").max = 4;
                 }
                 //Long table
                 else if (type.includes('longTable') == true) {
                     document.getElementById("seats").innerHTML = "This table has 6 seats.";
                     document.getElementById("diagram").className = "longTable";
+                    document.getElementById("partySize").max = 6;
                 }
                 //Round table
                 else if (type.includes('roundTable') == true) {
                     document.getElementById("seats").innerHTML = "This table has 4 seats.";
                     document.getElementById("diagram").className = "roundTable";
+                    document.getElementById("partySize").max = 4;
                 }
                 //Square table
                 else if (type.includes('squareTable') == true) {
                     document.getElementById("seats").innerHTML = "This table has 2 seats.";
                     document.getElementById("diagram").className = "squareTable";
+                    document.getElementById("partySize").max = 2;
                 }
                 else {
                     //Placeholder if more table types need to be added
                 }
             }
 
+            //Submitting reservation javascript
             function chooseTable() {
                 //Code table selection notification
-                if (confirm("Table reserved! Click OK to return to home. Cancel to close popup.")) {
-                    location.href = "UserHomeScreen.html";
-                } else {
+                document.getElementById("reservationForm").submit();
 
-                }
+                //if (confirm("Table reserved! Click OK to return to home. Cancel to close popup.")) {
+                   //location.href = "UserHomeScreen.html";
+                //}
+
+
             }
 
+            //Goes back to user home screen
             function goBack() {
                 location.href = "tablemap.html";
             }
 
+            //Popup test: retired right now
             function popupTest() {
                 var testText;
                 if (confirm("Pop test success? Ok for yes, Cancel for no")) {
@@ -144,7 +158,6 @@
                 } else {
                     txt = "Test failed";
                 }
-
                 document.getElementById("test").innerHTML = txt;
             }
         </script>

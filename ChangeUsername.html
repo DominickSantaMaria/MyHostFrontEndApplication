@@ -164,7 +164,7 @@ html {
 
     <h1 class="head1">Change Username</h1>
     <div class="col-s-3 menu">
-      <input type="text" size ="25" style = "height:80px; font-size:20pt;" placeholder="New Username" name="uname" required><br><br>
+      <input type="text" size ="25" style = "height:60px; font-size:20pt;" placeholder="New Username" name="uname" required><br><br>
       <label>
       </label><br><br>
       
@@ -197,6 +197,13 @@ html {
        
       });
     });
+
+    let Settings = document.querySelectorAll('.btns2 li');
+    Settings.forEach((item, index) => {
+            item.addEventListener('click', (event) => {
+                window.location = "account.html";
+            });
+        });
 </script>
 </html>
 

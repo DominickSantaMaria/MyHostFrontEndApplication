@@ -16,12 +16,17 @@ Added nav bar that we can add more buttons if necessarily and css to go along. N
 Added pop up tests for table reservation page.
 
 07 Nov 2021
-Added CSS grid to Table Template file to make customization easier. Also added a form for entering information for table and separate stylesheet for table template.
+1. Added CSS grid to Table Template file to make customization easier. Also added a form for entering information for table and separate stylesheet for table template.
+2. Added login styles css file / updated login input css
+3. Added sign up styles css file / updated sign up input css
+4. Adjusted table template so max attribute of input for partySize to match max seats for table type selected
+5. Added error handling on booking details for phone number, and option to opt in or out of automatic table swapping
+6. Updated table template size display from scale(1) --> scale(1.5)
 
 Next Steps:
-1. Organize and develop created home screen
+1. Organize and develop created home screen (In Progress)
 2. Figure out how to make interactive pages for the table configurations / choose table in restaurant.
-3. Create booking screen for restaurant.
+3. Create booking screen for restaurant. (DONE)
 4. Create web notification that a different table is available
  . More user stuff
 x. Create admin view for managing tables
