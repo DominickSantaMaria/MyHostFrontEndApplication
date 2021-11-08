@@ -21,6 +21,7 @@ Added pop up tests for table reservation page.
 3. Added sign up styles css file / updated sign up input css
 4. Adjusted table template so max attribute of input for partySize to match max seats for table type selected
 5. Added error handling on booking details for phone number, and option to opt in or out of automatic table swapping
+6. Updated table template size display from scale(1) --> scale(1.5)
 
 Next Steps:
 1. Organize and develop created home screen
