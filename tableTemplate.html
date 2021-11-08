@@ -32,11 +32,13 @@
                 </table>
             </div>
             <div class="item4">
-                <form>
-                    <input type="text" id="name" name="name" placeholder="Group Name" />
-                    <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" />
-                    <input type="number" id="partySize" name="partySize" min="1" max="6" placeholder="Party Size" /><br />
-                    <input type="submit" value="Choose this table!" onclick="chooseTable()" />
+                <form id="reservationForm">
+                    <input type="text" id="name" name="name" placeholder="Group Name" required/>
+                    <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Phone Number 123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/>
+                    <input type="number" id="partySize" name="partySize" min="1" max="6" placeholder="Party Size" required/><br />
+                    <input type="checkbox" id="optIn" name="optIn" value="Yes" />
+                    <label for="optIn">Seat my party sooner if a different table is available</label><br />
+                    <button class="button tempTable" id="Yes" onclick="chooseTable()">Choose this table!</button>
                 </form>
             </div>
             <div class="item5">
@@ -87,11 +89,13 @@
 
         <script>
 
-
+            //Window Load
             window.onload = function () {
+                //Getting session data of table item
                 var tableSelected = sessionStorage.getItem("table");
                 document.getElementById("tableDisplay").innerHTML = "Selection: " + tableSelected;
 
+                //Getting session data of type item
                 var type = sessionStorage.getItem("type");
 
                 //Corner table
@@ -129,17 +133,24 @@
                 }
             }
 
+            //Submitting reservation javascript
             function chooseTable() {
                 //Code table selection notification
-                if (confirm("Table reserved! Click OK to return to home. Cancel to close popup.")) {
-                    location.href = "UserHomeScreen.html";
-                }
+                document.getElementById("reservationForm").submit();
+
+                //if (confirm("Table reserved! Click OK to return to home. Cancel to close popup.")) {
+                   //location.href = "UserHomeScreen.html";
+                //}
+
+
             }
 
+            //Goes back to user home screen
             function goBack() {
                 location.href = "tablemap.html";
             }
 
+            //Popup test: retired right now
             function popupTest() {
                 var testText;
                 if (confirm("Pop test success? Ok for yes, Cancel for no")) {
@@ -147,7 +158,6 @@
                 } else {
                     txt = "Test failed";
                 }
-
                 document.getElementById("test").innerHTML = txt;
             }
         </script>
