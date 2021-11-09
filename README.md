@@ -26,6 +26,7 @@ Added pop up tests for table reservation page.
 08 Nov 2021
 1. Added admin view home page and some basic information. Added buttons to navigation bar to switch between admin view and user view for placeholder purposes.
 2. Updated links for buttons on navigation bar to inherit color so text isn't blue anymore + MyHost now is a button to home page.
+3. Added admin view table layout page, adjusted some formatting. Will plan to add customizable...grid. Work in progress and patience.
 
 Next Steps:
 1. Organize and develop created home screen (In Progress)
