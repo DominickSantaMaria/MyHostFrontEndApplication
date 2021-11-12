@@ -80,22 +80,129 @@ html {
 .grid-container {
     display: grid;
     grid-template-areas:
-        'header header header header header header'
-        'left left left right right right'
-        'left left left right right right'
-        'left left left right right right';
-    grid-gap: 5px;
+        'header header header header header header header'
+        'sec1a sec2a sec3a sec4a sec5a sec6a sec7a form'
+        'sec1b sec2b sec3b sec4b sec5b sec6b sec7b form'
+        'sec1c sec2c sec3c sec4c sec5c sec6c sec7c form'
+        'sec1d sec2d sec3d sec4d sec5d sec6d sec7d form';
+        grid-gap: 5px;
     padding: 10px;
 }
 
     .grid-container > div {
-        background-color: wheat;
         text-align: center;
         padding: 20px 0;
     }
 
-/*Footer CSS*/
-.footer {
+.headerGrid {
+    grid-area: header;
+    grid-column: 1 / 20;
+    grid-row: 1 / 1;
+    background-color: wheat;
+}
+
+.form {
+    grid-area: form;
+    grid-column: 12 / 20;
+    grid-row: 2 / 12;
+    background-color: wheat;
+}
+
+/*Row A*/
+.sec1a {
+    grid-area: sec1a;
+    grid-column: 1 / 1;
+    grid-row: 2 / 3;
+    background-color: gray;
+}
+.sec2a {
+    grid-area: sec2a;
+    grid-column: 2 / 2;
+    grid-row: 2 / 3;
+    background-color: gray;
+}
+.sec3a {
+    grid-area: sec3a;
+    grid-column: 3 / 3;
+    grid-row: 2 / 3;
+    background-color: gray;
+}
+.sec4a {
+    grid-area: sec4a;
+    grid-column: 4 / 4;
+    grid-row: 2 / 3;
+    background-color: gray;
+}
+.sec5a {
+    grid-area: sec5a;
+    grid-column: 5 / 5;
+    grid-row: 2 / 3;
+    background-color: gray;
+}
+.sec6a {
+    grid-area: sec6a;
+    grid-column: 6 / 6;
+    grid-row: 2 / 3;
+    background-color: gray;
+}
+.sec7a {
+    grid-area: sec7a;
+    grid-column: 7 / 7;
+    grid-row: 2 / 3;
+    background-color: gray;
+}
+
+/*Row B*/
+.sec1b {
+    grid-area: sec1b;
+    grid-column: 1 / 1;
+    grid-row: 3 / 4;
+    background-color: gray;
+}
+.sec2b {
+    grid-area: sec2b;
+    grid-column: 2 / 2;
+    grid-row: 3 / 4;
+    background-color: gray;
+}
+
+.sec3b {
+    grid-area: sec3b;
+    grid-column: 3 / 3;
+    grid-row: 3 / 4;
+    background-color: gray;
+}
+
+.sec4b {
+    grid-area: sec4b;
+    grid-column: 4 / 4;
+    grid-row: 3 / 4;
+    background-color: gray;
+}
+
+.sec5b {
+    grid-area: sec5b;
+    grid-column: 5 / 5;
+    grid-row: 3 / 4;
+    background-color: gray;
+}
+
+.sec6b {
+    grid-area: sec6b;
+    grid-column: 6 / 6;
+    grid-row: 3 / 4;
+    background-color: gray;
+}
+
+.sec7b {
+    grid-area: sec7b;
+    grid-column: 7 / 7;
+    grid-row: 3 / 4;
+    background-color: gray;
+}
+
+    /*Footer CSS*/
+    .footer {
     background-color: #0099cc;
     color: #ffffff;
     text-align: center;

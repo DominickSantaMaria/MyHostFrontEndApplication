@@ -28,6 +28,9 @@ Added pop up tests for table reservation page.
 2. Updated links for buttons on navigation bar to inherit color so text isn't blue anymore + MyHost now is a button to home page.
 3. Added admin view table layout page, adjusted some formatting. Will plan to add customizable...grid. Work in progress and patience.
 
+12 Nov 2021
+1. Adding adminLayout html and style sheet for html page. Adding an incomplete layout html and plan to add more. Wanted to go ahead and add to project.
+
 Next Steps:
 1. Organize and develop created home screen (In Progress)
 2. Figure out how to make interactive pages for the table configurations / choose table in restaurant.
