@@ -35,7 +35,7 @@ Next Steps:
 1. Organize and develop created home screen (In Progress)
 2. Figure out how to make interactive pages for the table configurations / choose table in restaurant.
 3. Create booking screen for restaurant. (DONE)
-4. Create web notification that a different table is available
+4. Create web notification that a different table is available (need connection to backend to be able to test)
  . More user stuff
 x. Create admin view for managing tables
 y . create admin view for moving tables in or out of the restaurant. 
