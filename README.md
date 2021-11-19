@@ -35,25 +35,25 @@ Added pop up tests for table reservation page.
 1. Pushing updated CSS table layout for admin view. No functionality yet. Plan to work on client/host requests.
 
 -----------------------------------------------
-#Completed Steps:
+# Completed Steps:
 1. Organize and develop created home screen
 2. Figure out how to make interactive pages for the table configurations / choose table in restaurant
 3. Create booking screen for restaurant
 
-#Next Steps:
+# Next Steps:
 <<<<<<< HEAD
 1. Work out client-server requests for smooth transition of connecting backend to frontend: **In progress**
 2. Create web notification that a different table is available: **In progress**
 3. Create admin view for managing tables: **In progress**
 4. create admin view for moving tables in or out of the restaurant: **In progress**
 
-#Later Steps:
+# Later Steps:
 [ ] 1. Add javascript for login and registration in the login.html and signup.html pages. 
 [ ] 2. Connect the front end to the backend via sockets. JavaScript -> Java
 
 
 
-#Notes for Website <---> Server (backend) communication
+# Notes for Website <---> Server (backend) communication
 1. Do we use sockets for communication? 
    This would involve the frequent communication of persistent sockets.
 
