@@ -31,15 +31,20 @@ Added pop up tests for table reservation page.
 12 Nov 2021
 1. Adding adminLayout html and style sheet for html page. Adding an incomplete layout html and plan to add more. Wanted to go ahead and add to project.
 
+19 Nov 2021
+1. Pushing updated CSS table layout for admin view. No functionality yet. Plan to work on client/host requests.
+
+Completed Steps:
+1. Organize and develop created home screen
+2. Figure out how to make interactive pages for the table configurations / choose table in restaurant
+3. Create booking screen for restaurant
+
 Next Steps:
-1. Organize and develop created home screen (In Progress)
-2. Figure out how to make interactive pages for the table configurations / choose table in restaurant.
-3. Create booking screen for restaurant. (DONE)
-4. Create web notification that a different table is available
+1. Work out client-server requests for smooth transition of connecting backend to frontend
+2. Create web notification that a different table is available: In Progress
  . More user stuff
-x. Create admin view for managing tables
-y . create admin view for moving tables in or out of the restaurant. 
-z. ? 
+3. Create admin view for managing tables: In Progress
+4. create admin view for moving tables in or out of the restaurant: In Progress
 
 Later Steps:
 [ ] 1. Add javascript for login and registration in the login.html and signup.html pages. 
