@@ -40,8 +40,15 @@ Completed Steps:
 3. Create booking screen for restaurant
 
 Next Steps:
+<<<<<<< HEAD
 1. Work out client-server requests for smooth transition of connecting backend to frontend
 2. Create web notification that a different table is available: In Progress
+=======
+1. Organize and develop created home screen (In Progress)
+2. Figure out how to make interactive pages for the table configurations / choose table in restaurant.
+3. Create booking screen for restaurant. (DONE)
+4. Create web notification that a different table is available (need connection to backend to be able to test)
+>>>>>>> 263e006e20fc2e780101bd1897347645ccab711c
  . More user stuff
 3. Create admin view for managing tables: In Progress
 4. create admin view for moving tables in or out of the restaurant: In Progress
