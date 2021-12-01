@@ -34,6 +34,9 @@ Added pop up tests for table reservation page.
 19 Nov 2021
 1. Pushing updated CSS table layout for admin view. No functionality yet. Plan to work on client/host requests.
 
+30 Nov 2021
+1. Sorry for lateness ;n; updated tableMap.html to have provided string parsing functions when sockets implemented. Two functions for either each string or one entire string.
+
 -----------------------------------------------
 # Completed Steps:
 1. Organize and develop created home screen
@@ -43,9 +46,9 @@ Added pop up tests for table reservation page.
 # Next Steps:
 <<<<<<< HEAD
 1. Work out client-server requests for smooth transition of connecting backend to frontend: **In progress**
-2. Create web notification that a different table is available: **In progress**
-3. Create admin view for managing tables: **In progress**
-4. create admin view for moving tables in or out of the restaurant: **In progress**
+2. Create web notification that a different table is available: **Canceled --> Automatically change table is opt in**
+3. Create admin view for managing tables: **On hold**
+4. create admin view for moving tables in or out of the restaurant: **On hold**
 
 # Later Steps:
 [ ] 1. Add javascript for login and registration in the login.html and signup.html pages. 

@@ -162,7 +162,7 @@ html {
 }
 
 .roundTable {
-    background-color: #6feaf6;
+    background-color: #ccc;
     height: 75px;
     width: 75px;
     margin: 10px;
@@ -183,7 +183,7 @@ html {
 }
 
 .cornerBooth {
-    background-color: #6feaf6;
+    background-color: #ccc;
     height: 100px;
     width: 100px;
     margin: 10px;
@@ -204,7 +204,7 @@ html {
 }
 
 .longTable {
-    background-color: #6feaf6;
+    background-color: #ccc;
     height: 50px;
     width: 100px;
     margin: 10px;
@@ -225,7 +225,7 @@ html {
 }
 
 .squareTable {
-    background-color: #6feaf6;
+    background-color: #ccc;
     height: 50px;
     width: 50px;
     margin: 10px;
