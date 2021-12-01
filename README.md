@@ -46,13 +46,18 @@ a wait time and number of groups ahead of you in queue for a specific table
 1. Organize and develop created home screen
 2. Figure out how to make interactive pages for the table configurations / choose table in restaurant
 3. Create booking screen for restaurant
+4. Created test functions for socket string parsing for some of the html pages
 
 # Next Steps:
 <<<<<<< HEAD
 1. Work out client-server requests for smooth transition of connecting backend to frontend: **In progress**
-2. Create web notification that a different table is available: **Canceled --> Automatically change table is opt in**
-3. Create admin view for managing tables: **On hold**
-4. create admin view for moving tables in or out of the restaurant: **On hold**
+2. Work on functions in tableTemplate.html for confirming group reservation to send to server. **In progress**
+3. Clean up User Home Screen, fix font discrepancy 
+
+#On Hold Steps:
+1. Create web notification that a different table is available: **Canceled --> Automatically change table is opt in**
+2. Create admin view for managing tables: **On hold**
+3. create admin view for moving tables in or out of the restaurant: **On hold**
 
 # Later Steps:
 [ ] 1. Add javascript for login and registration in the login.html and signup.html pages. 
