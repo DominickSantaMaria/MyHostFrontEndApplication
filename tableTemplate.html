@@ -16,7 +16,10 @@
         </div>
 
         <div class="grid-container">
-            <div class="item1"><h3 id="tableDisplay">N/A Table</h3></div>
+            <div class="item1">
+                <h3 id="tableDisplay">N/A Table</h3>
+                <h3 id="queueTime">N/A</h3>
+            </div>
             <div class="item2">
                 <table class="display">
                     <tr>
@@ -53,6 +56,7 @@
                 //Getting session data of table item
                 var tableSelected = sessionStorage.getItem("table");
                 document.getElementById("tableDisplay").innerHTML = "Selection: " + tableSelected;
+
 
                 //Getting session data of type item
                 var type = sessionStorage.getItem("type");
@@ -94,30 +98,12 @@
 
             //Submitting reservation javascript
             function chooseTable() {
-                //Code table selection notification
                 document.getElementById("reservationForm").submit();
-
-                //if (confirm("Table reserved! Click OK to return to home. Cancel to close popup.")) {
-                   //location.href = "UserHomeScreen.html";
-                //}
-
-
             }
 
             //Goes back to user home screen
             function goBack() {
                 location.href = "tablemap.html";
-            }
-
-            //Popup test: retired right now
-            function popupTest() {
-                var testText;
-                if (confirm("Pop test success? Ok for yes, Cancel for no")) {
-                    txt = "Test successful";
-                } else {
-                    txt = "Test failed";
-                }
-                document.getElementById("test").innerHTML = txt;
             }
         </script>
     </body>

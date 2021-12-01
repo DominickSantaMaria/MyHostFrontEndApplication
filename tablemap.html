@@ -161,7 +161,7 @@
             //Long table & booth select function
             Array.from(longTables).forEach(table => {
                 table.addEventListener('click', () => {
-                    var tableInfo = table.innerHTML;      
+                    var tableInfo = table.innerHTML;
 
                     sessionStorage.setItem("table", tableInfo);
                     sessionStorage.setItem("type", "longTable");
