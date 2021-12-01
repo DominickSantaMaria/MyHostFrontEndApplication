@@ -35,7 +35,11 @@ Added pop up tests for table reservation page.
 1. Pushing updated CSS table layout for admin view. No functionality yet. Plan to work on client/host requests.
 
 30 Nov 2021
-1. Sorry for lateness ;n; updated tableMap.html to have provided string parsing functions when sockets implemented. Two functions for either each string or one entire string.
+Sorry for lateness ;n; updated tableMap.html to have provided string parsing functions when sockets implemented. Two functions for either each string or one entire string.
+
+01 Dec 2021
+Added functions for string parsing on tableTemplate.html to parse replies from the server. Functions will take replies that the client requests (how many groups in queue) and display
+a wait time and number of groups ahead of you in queue for a specific table
 
 -----------------------------------------------
 # Completed Steps:
