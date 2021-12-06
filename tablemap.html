@@ -75,7 +75,7 @@
                               <div class="longTable" id="10">Table 10</div>
                           </td>
                           <td>
-                              <div class="longTable" id="11"">Table 11</div>
+                              <div class="longTable" id="11">Table 11</div>
                           </td>
                           <td>
                               <div class="longTable" id="12">Table 12</div>
@@ -128,7 +128,6 @@
 
     
         <script>
-
             //Server reply testing code --> 1 is short string, 2 is entire string
             var serverReply1 = "table:1:true";
             var serverReply2 = "table:1:true:table:2:true:table:3:false:table:4:true:table:5:false:table:6:true" +
@@ -139,8 +138,11 @@
             //Client request testing code --> 1 is short string, 2 is entire string
             var clientRequest1 = "isFree:table:1";
             var clientRequest2 = "isFree:table:1:isFree:table:2:isFree:table:3:isFree:table:4:isFree:table:5:isFree:table:6:isFree:table:7" +
-                ":isFree:table:8:isFree:table:9:isFree:table:10:isFree:table:11:isFree:table:12:isFree:table:13:isFree:table:14" + 
+                ":isFree:table:8:isFree:table:9:isFree:table:10:isFree:table:11:isFree:table:12:isFree:table:13:isFree:table:14" +
                 "isFree:table:15:isFree:table:16:isFree:table:17:isFree:table:18:isFree:table:19:isFree:table:20:isFree:table:21:isFree:table:22:isFree:table:23";
+
+            //Request for table availability, reply is equivalent to serverReply2
+            var clientRequest3 = "tableAvailability"
         
             const cornerBooths = document.getElementsByClassName('cornerBooth');
             const longTables = document.getElementsByClassName('longTable');
