@@ -7,30 +7,59 @@
   box-sizing: border-box;
 }
 
-/* Create two equal columns that floats next to each other */
+/* Create three equal columns that floats next to each other */
 .column {
   float: left;
-  width: 50%;
+  width: 33.33%;
   padding: 10px;
   border: 2px solid #FB8064;
-  height: 500px; /* Should be removed. Only for demonstration */
+  height: 500px; 
 }
-.header1{
-    text-align:center;
-    background-color: #fde1d8;
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }
-.textcenter{
-    text-align:center;
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
 }
-.navBar {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+.btn-group button:hover {
+  background-color: #FB8064;
 }
-.navBar li {
-  display: inline-block;
-  padding: 5px;
-  vertical-align: middle;
+.btn-groupPrev button:hover {
+  background-color: #FB8064;
+}
+p {text-align: center;}
+.btn-group button {
+  background-color: white; 
+  border: 1px solid #FB8064; 
+  color: black; 
+  padding: 10px 24px; 
+  cursor: pointer; 
+  width: 50%; 
+  display: block; 
+  display:inline-block;
+  text-align:center;
+  }
+  .btn-groupPrev button {
+  background-color: white; 
+  border: 1px solid #FB8064; 
+  color: black; 
+  padding: 10px 24px; 
+  cursor: pointer; 
+  width: 50%; 
+  display: block; 
+  display:inline-block;
+  text-align:center;
+  }
+.btn-group button:not(:last-child) {
+  border-bottom: none; /* Prevent double borders */
 }
 .header {
     background-color: #FB8064;
@@ -47,34 +76,26 @@
   display: inline-block;
   font-size: 16px;
 }
-
-
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+.navBar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
-.btn-group button {
-  background-color: white; /* Green background */
-  border: 1px solid #FB8064; /* Green border */
-  color: black; /* White text */
-  padding: 10px 24px; /* Some padding */
-  cursor: pointer; /* Pointer/hand icon */
-  width: 50%; /* Set a width if needed */
-  display: block; /* Make the buttons appear below each other */
-  display:inline-block;
-  text-align:center;
-  }
-.btn-group button:not(:last-child) {
-  border-bottom: none; /* Prevent double borders */
+.navBar li {
+  display: inline-block;
+  padding: 5px;
+  vertical-align: middle;
 }
-/* Add a background color on hover */
-.btn-group button:hover {
-  background-color: #FB8064;
+.header1{
+    text-align:center;
+    background-color: #fde1d8;
 }
-p {text-align: center;}
+.textcenter{
+    text-align:center;
+}
+* {
+  box-sizing: border-box;
+}
 </style>
 </head>
 <body>
@@ -91,26 +112,40 @@ p {text-align: center;}
 <br>
 
 <div class="row">
-  <div class="column" style="background-color:#c4aead;">
+    <div class="column" style="background-color:#c4aead;">
     <h2 class=header1>Previous Searches</h2>
     <div class="btn-group">
     <p>
-  <button>Johnny Brusco's</button>
+  <button>Ducksworth Taphouse and Grill</button>
   <br>
   <button>Chili's</button>
   <br>
-  <button>Ducksworth Taphouse and Grill</button>
+  <button>Johnny Brusco's</button>
   <br>
   <button>Blacow</button>
   <br>
+  </p>
 </div>
-    </p>
   </div>
+
   <div class="column" style="background-color:#c4aead;">
     <h2 class=header1>Current Reservations</h2>
     <p class=textcenter>No reservations made yet!</p>
   </div>
+
+  <div class="column" style="background-color:#c4aead;">
+    <h2 class=header1>Previous Reservations</h2>
+     <div class="btn-groupPrev">
+    <p>
+  <button>Chili's (11/1/2021)</button>
+  <br>
+  <button>Blacow (10/15/2021)</button>
+  <br>
+  </p>
 </div>
+  </div>
+
+  </div>
 
 
          <script>
