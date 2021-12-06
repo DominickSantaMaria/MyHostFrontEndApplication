@@ -41,6 +41,8 @@ Sorry for lateness ;n; updated tableMap.html to have provided string parsing fun
 Added functions for string parsing on tableTemplate.html to parse replies from the server. Functions will take replies that the client requests (how many groups in queue) and display
 a wait time and number of groups ahead of you in queue for a specific table
 
+05 Dec 2021: Added function for creating request string for group reservation.
+
 -----------------------------------------------
 # Completed Steps:
 1. Organize and develop created home screen

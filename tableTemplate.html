@@ -36,9 +36,9 @@
                 </table>
             </div>
             <div class="item4">
-                <form id="reservationForm">
+                <form id="reservationForm" name="reservation">
                     <input type="text" id="name" name="name" placeholder="Group Name" required/>
-                    <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Phone Number 123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/>
+                    <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Phone Number 1234567890" min="10" max="10" required/>
                     <input type="number" id="partySize" name="partySize" min="1" max="6" placeholder="Party Size" required/><br />
                     <input type="checkbox" id="optIn" name="optIn" value="Yes" />
                     <label for="optIn">Seat my party sooner if a different table is available</label><br />
@@ -129,6 +129,23 @@
 
             //Submitting reservation javascript
             function chooseTable() {
+                //Example string --> "queue:table:1:Jonny Depp:919919919:2:true"
+                var tableID = sessionStorage.getItem("id");
+                var name = document.forms["reservation"]["name"].value;
+                var number = document.forms["reservation"]["phoneNumber"].value;
+                var partySize = document.forms["reservation"]["partySize"].value;
+                var optIN = "n/a";
+
+                if(document.forms["reservation"]["optIn"].checked){
+                    optIN = true;
+                }else{
+                    optIN = false;
+                }
+
+                //String request
+                var groupInfo = "queue:table:" + tableID + ":" + name + ":" + number + ":" + partySize + ":" + optIN;
+
+                alert(groupInfo);
                 document.getElementById("reservationForm").submit();
             }
 
