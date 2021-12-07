@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>Table Details</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="tableTempStyles.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="../webjars/jquery/jquery.min.js"></script>
+        <script src="../webjars/sockjs-client/sockjs.min.js"></script>
+        <script src="../webjars/stomp-websocket/stomp.min.js"></script>
+        <script src="../app2.js"></script>
     </head>
     <body>
 
@@ -18,8 +22,9 @@
         <div class="grid-container">
             <div class="item1">
                 <h3 id="tableDisplay">N/A Table</h3>
-                <h4 id="queueTime">N/A</h4>
-                <h4 id="queueTotal">N/A</h4>
+                <h4 id="queueTime">Queue Time: N/A</h4>
+                <h4 id="queueTotal">Queue Size: N/A</h4>
+                <button class="button tempTable" onclick="refreshQueue()">Refresh</button>
             </div>
             <div class="item2">
                 <table class="display">
@@ -51,25 +56,25 @@
         </div>
 
         <script>
-
             //Window Load
             window.onload = function () {
-                //Getting session data of table item
+                console.log("-AA");
+                connect();
+                console.log("-BB");
+
+                //Sessions storage id, queueSize request string
+                var tableID = sessionStorage.getItem("id");
+                var request = "getQueueSize:table:" + tableID;
+
+                setUpTemplate();
+            }
+
+            function setUpTemplate(){
+                //Setting up table title
                 var tableSelected = sessionStorage.getItem("table");
                 document.getElementById("tableDisplay").innerHTML = "Selection: " + tableSelected;
 
-                var tableID = sessionStorage.getItem("id");
-                document.getElementById("queueTime").innerHTML = "Table ID Test: " + tableID;
-
-                //Test Strings for socket communication --> client request string, reply for table w/ queue, reply for table w/out queue
-                var clientRequest = "queueTotal:table:1";
-                var serverReply1 = "table:1:2";
-                var serverReply2 = "table:1:0";
-
-                checkQueue1(serverReply1);
-
-
-                //Getting session data of type item
+                //Setting up table display + info
                 var type = sessionStorage.getItem("type");
 
                 //Corner table
@@ -107,16 +112,25 @@
                 }
             }
 
-            //Server reply function
-            //Splits reply into array, checks number of groups in queue and responds accordingly
-            function checkQueue1(reply) {
-                var replyArray = reply.split(":");
+            async function refreshQueue(){
+                console.log("Queue refresh!");
+
+                var tableID = sessionStorage.getItem("id");
+                var request = "getQueueSize:table:" + tableID;
+
+                sendRequest(request);
+                while (response == null) {
+                    await new Promise(r => setTimeout(r, 100));
+                }
+                console.log("[5]: " + response);
+
+                var replyArray = response.split(":");
 
                 if (replyArray[2] > 0) {
                     var time = replyArray[2] * 45.00;
                     if (time >= 60) {
-                        var adjusTime = time / 60.00;
-                        time = adjusTime;
+                        var adjustTime = time / 60.00;
+                        time = adjustTime;
                     }
 
                     document.getElementById("queueTime").innerHTML = "Current Wait: " + time + " hrs.";
@@ -128,13 +142,18 @@
             }
 
             //Submitting reservation javascript
-            function chooseTable() {
+            async function chooseTable() {
                 //Example string --> "queue:table:1:Jonny Depp:919919919:2:true"
                 var tableID = sessionStorage.getItem("id");
                 var name = document.forms["reservation"]["name"].value;
                 var number = document.forms["reservation"]["phoneNumber"].value;
                 var partySize = document.forms["reservation"]["partySize"].value;
                 var optIN = "n/a";
+
+                //Making sure fields are not null
+                if(name === "" || number === "" || partySize === ""){
+                    document.getElementById("No").setAttribute("disabled");
+                }
 
                 if(document.forms["reservation"]["optIn"].checked){
                     optIN = true;
@@ -144,9 +163,16 @@
 
                 //String request
                 var groupInfo = "queue:table:" + tableID + ":" + name + ":" + number + ":" + partySize + ":" + optIN;
+                console.log(groupInfo);
 
-                alert(groupInfo);
-                document.getElementById("reservationForm").submit();
+                sendRequest(groupInfo);
+                while (response == null) {
+                    await new Promise(r => setTimeout(r, 100));
+                }
+                console.log("[5]: " + response);
+
+                alert("Reservation confirmed!");
+                location.href = "UserHomeScreen.html";
             }
 
             //Goes back to user home screen
