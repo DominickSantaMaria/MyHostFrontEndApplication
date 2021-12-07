@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>Table Details</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="tableTempStyles.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="../webjars/jquery/jquery.min.js"></script>
+        <script src="../webjars/sockjs-client/sockjs.min.js"></script>
+        <script src="../webjars/stomp-websocket/stomp.min.js"></script>
+        <script src="../app2.js"></script>
     </head>
     <body>
 
@@ -51,9 +55,12 @@
         </div>
 
         <script>
-
             //Window Load
             window.onload = function () {
+                console.log("-AA");
+                connect();
+                console.log("-BB");
+
                 //Getting session data of table item
                 var tableSelected = sessionStorage.getItem("table");
                 document.getElementById("tableDisplay").innerHTML = "Selection: " + tableSelected;
@@ -61,12 +68,11 @@
                 var tableID = sessionStorage.getItem("id");
                 document.getElementById("queueTime").innerHTML = "Table ID Test: " + tableID;
 
-                //Test Strings for socket communication --> client request string, reply for table w/ queue, reply for table w/out queue
-                var clientRequest = "queueTotal:table:1";
-                var serverReply1 = "table:1:2";
-                var serverReply2 = "table:1:0";
+                console.log("Table and ID html updated...");
 
-                checkQueue1(serverReply1);
+                //Server request
+                //var request = "getQueueSize:table:" + tableID;
+                //queueSize(request);
 
 
                 //Getting session data of type item
@@ -105,6 +111,14 @@
                 else {
                     //Placeholder if more table types need to be added
                 }
+
+
+
+            }
+
+            //Wait function
+            function testWait(){
+                
             }
 
             //Server reply function
@@ -115,8 +129,8 @@
                 if (replyArray[2] > 0) {
                     var time = replyArray[2] * 45.00;
                     if (time >= 60) {
-                        var adjusTime = time / 60.00;
-                        time = adjusTime;
+                        var adjustTime = time / 60.00;
+                        time = adjustTime;
                     }
 
                     document.getElementById("queueTime").innerHTML = "Current Wait: " + time + " hrs.";
@@ -125,6 +139,18 @@
                     document.getElementById("queueTime").innerHTML = "Current Wait: Available";
                     document.getElementById("queueTotal").innerHTML = "Groups in Queue: " + replyArray[2];
                 }
+            }
+
+            //Server reply function
+            async function queueSize(request){
+                sendRequest(request);
+                console.log("In async queueSize()...");
+
+                while (response == null) {
+                    await new Promise(r => setTimeout(r, 100));
+                }
+
+                console.log("[5]: " + response);
             }
 
             //Submitting reservation javascript
@@ -144,6 +170,8 @@
 
                 //String request
                 var groupInfo = "queue:table:" + tableID + ":" + name + ":" + number + ":" + partySize + ":" + optIN;
+
+                console.log("Reservation made!");
 
                 alert(groupInfo);
                 document.getElementById("reservationForm").submit();
