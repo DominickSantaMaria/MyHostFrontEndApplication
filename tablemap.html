@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>Table Map</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="styles.css">
+        <script src="../webjars/jquery/jquery.min.js"></script>
+        <script src="../webjars/sockjs-client/sockjs.min.js"></script>
+        <script src="../webjars/stomp-websocket/stomp.min.js"></script>
+        <script src="../app2.js"></script>
     </head>
     <body>
 
@@ -20,9 +25,8 @@
 
           <div class="col-6 col-s-9">
             <button class="button" type="button" id="backToHome" onclick="goBack()">Back to Home</button>
-            <button class="button" type="button" id="refresh" onclick="refreshLong()">Refresh</button>
+            <button class="button" type="button" id="refresh" onclick="refresh()">Refresh</button>
             <h2>Ducksworth's Taphouse and Grill</h2>
-            
               <h3>Table Guide</h3>
               <ul class="tableGuide">
                   <li>
@@ -128,22 +132,6 @@
 
     
         <script>
-            //Server reply testing code --> 1 is short string, 2 is entire string
-            var serverReply1 = "table:1:true";
-            var serverReply2 = "table:1:true:table:2:true:table:3:false:table:4:true:table:5:false:table:6:true" +
-                ":table:7:true:table:8:true:table:9:false:table:10:true:table:11:true:table:12:true" +
-                ":table:13:false:table:14:true:table:15:true:table:16:false:table:17:false:table:18:false" +
-                ":table:19:false:table:20:false:table:21:true:table:22:true:table:23:true";
-
-            //Client request testing code --> 1 is short string, 2 is entire string
-            var clientRequest1 = "isFree:table:1";
-            var clientRequest2 = "isFree:table:1:isFree:table:2:isFree:table:3:isFree:table:4:isFree:table:5:isFree:table:6:isFree:table:7" +
-                ":isFree:table:8:isFree:table:9:isFree:table:10:isFree:table:11:isFree:table:12:isFree:table:13:isFree:table:14" +
-                "isFree:table:15:isFree:table:16:isFree:table:17:isFree:table:18:isFree:table:19:isFree:table:20:isFree:table:21:isFree:table:22:isFree:table:23";
-
-            //Request for table availability, reply is equivalent to serverReply2
-            var clientRequest3 = "tableAvailability"
-        
             const cornerBooths = document.getElementsByClassName('cornerBooth');
             const longTables = document.getElementsByClassName('longTable');
             const roundTables = document.getElementsByClassName('roundTable');
@@ -198,29 +186,21 @@
                 window.location = "UserHomeScreen.html";
             }
 
-            //For each string reply for each table --> use this function multiple times for each table
-            function refreshShort() {
-                //Splits short reply into an array of 3 items --> table | tableID | bool
-                var replyArray = serverReply1.split(":");
-
-                //Checking if bool is true or false to decide table color
-                //If true or false, uses ID to find table and update style attribute
-                if (replyArray[2].includes("true") == true) {
-                    document.getElementById(replyArray[1]).style = "background-color: #6feaf6";
-                } else {
-                    document.getElementById(replyArray[1]).style = "background-color: #FE542D";
+            //Function for fetching table availability
+            async function refresh(){
+                sendRequest("tableAvailability");
+                console.log("In async function in tablemap");
+                while (response == null) {
+                  await new Promise(r => setTimeout(r, 100));
                 }
-            }
+                console.log("[8]: " + response);
 
-            //For one long string for all tables --> use this function one for all tables
-            function refreshLong() {
-                //Splits every item in long reply into array, every three items is the table, tableID, and bool
-                var replyArray = serverReply2.split(":");
-
-                //Count for skipping every 3 items to next table
+                console.log("Parsing table info...");
+                var replyArray = response.split(":");
                 var count = 0;
-                //For loop to loop through every table
-                for (var x = 1; x < 24; x++) {
+
+                console.log("Starting table color loop...");
+                for (var x = 1; x < 13; x++) {
                     if (replyArray[count + 2].includes("true") == true) {
                         document.getElementById(replyArray[count + 1]).style = "background-color: #6feaf6";
                     } else {
@@ -228,8 +208,11 @@
                     }
                     count += 3;
                 }
-            }
 
+                console.log("End of function");
+
+                //document.getElementById("greetings").innerHTML = response;
+            }
         </script>
     </body>
 </html>

@@ -43,6 +43,8 @@ a wait time and number of groups ahead of you in queue for a specific table
 
 05 Dec 2021: Added function for creating request string for group reservation.
 
+06 Dec 2021: Added async function for sending server request for table availability and parsing reply to update table map.
+
 -----------------------------------------------
 # Completed Steps:
 1. Organize and develop created home screen
