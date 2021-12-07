@@ -22,8 +22,9 @@
         <div class="grid-container">
             <div class="item1">
                 <h3 id="tableDisplay">N/A Table</h3>
-                <h4 id="queueTime">N/A</h4>
-                <h4 id="queueTotal">N/A</h4>
+                <h4 id="queueTime">Queue Time: N/A</h4>
+                <h4 id="queueTotal">Queue Size: N/A</h4>
+                <button class="button tempTable" onclick="refreshQueue()">Refresh</button>
             </div>
             <div class="item2">
                 <table class="display">
@@ -61,21 +62,19 @@
                 connect();
                 console.log("-BB");
 
-                //Getting session data of table item
+                //Sessions storage id, queueSize request string
+                var tableID = sessionStorage.getItem("id");
+                var request = "getQueueSize:table:" + tableID;
+
+                setUpTemplate();
+            }
+
+            function setUpTemplate(){
+                //Setting up table title
                 var tableSelected = sessionStorage.getItem("table");
                 document.getElementById("tableDisplay").innerHTML = "Selection: " + tableSelected;
 
-                var tableID = sessionStorage.getItem("id");
-                document.getElementById("queueTime").innerHTML = "Table ID Test: " + tableID;
-
-                console.log("Table and ID html updated...");
-
-                //Server request
-                //var request = "getQueueSize:table:" + tableID;
-                //queueSize(request);
-
-
-                //Getting session data of type item
+                //Setting up table display + info
                 var type = sessionStorage.getItem("type");
 
                 //Corner table
@@ -111,20 +110,21 @@
                 else {
                     //Placeholder if more table types need to be added
                 }
-
-
-
             }
 
-            //Wait function
-            function testWait(){
-                
-            }
+            async function refreshQueue(){
+                console.log("Queue refresh!");
 
-            //Server reply function
-            //Splits reply into array, checks number of groups in queue and responds accordingly
-            function checkQueue1(reply) {
-                var replyArray = reply.split(":");
+                var tableID = sessionStorage.getItem("id");
+                var request = "getQueueSize:table:" + tableID;
+
+                sendRequest(request);
+                while (response == null) {
+                    await new Promise(r => setTimeout(r, 100));
+                }
+                console.log("[5]: " + response);
+
+                var replyArray = response.split(":");
 
                 if (replyArray[2] > 0) {
                     var time = replyArray[2] * 45.00;
@@ -139,18 +139,6 @@
                     document.getElementById("queueTime").innerHTML = "Current Wait: Available";
                     document.getElementById("queueTotal").innerHTML = "Groups in Queue: " + replyArray[2];
                 }
-            }
-
-            //Server reply function
-            async function queueSize(request){
-                sendRequest(request);
-                console.log("In async queueSize()...");
-
-                while (response == null) {
-                    await new Promise(r => setTimeout(r, 100));
-                }
-
-                console.log("[5]: " + response);
             }
 
             //Submitting reservation javascript
