@@ -142,13 +142,18 @@
             }
 
             //Submitting reservation javascript
-            function chooseTable() {
+            async function chooseTable() {
                 //Example string --> "queue:table:1:Jonny Depp:919919919:2:true"
                 var tableID = sessionStorage.getItem("id");
                 var name = document.forms["reservation"]["name"].value;
                 var number = document.forms["reservation"]["phoneNumber"].value;
                 var partySize = document.forms["reservation"]["partySize"].value;
                 var optIN = "n/a";
+
+                //Making sure fields are not null
+                if(name === "" || number === "" || partySize === ""){
+                    document.getElementById("No").setAttribute("disabled");
+                }
 
                 if(document.forms["reservation"]["optIn"].checked){
                     optIN = true;
@@ -158,11 +163,16 @@
 
                 //String request
                 var groupInfo = "queue:table:" + tableID + ":" + name + ":" + number + ":" + partySize + ":" + optIN;
+                console.log(groupInfo);
 
-                console.log("Reservation made!");
+                sendRequest(groupInfo);
+                while (response == null) {
+                    await new Promise(r => setTimeout(r, 100));
+                }
+                console.log("[5]: " + response);
 
-                alert(groupInfo);
-                document.getElementById("reservationForm").submit();
+                alert("Reservation confirmed!");
+                location.href = "UserHomeScreen.html";
             }
 
             //Goes back to user home screen

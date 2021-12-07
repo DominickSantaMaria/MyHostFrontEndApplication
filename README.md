@@ -47,6 +47,7 @@ a wait time and number of groups ahead of you in queue for a specific table
 1. Added async function for sending server request for table availability and parsing reply to update table map.
 2. Added refresh button for refreshing queue for each table. Could not get onload to work without waiting for the
 socket to finish. 
+3. Added reservation creation code for creating group that will be added to queue with necessary information.
 
 -----------------------------------------------
 # Completed Steps:
