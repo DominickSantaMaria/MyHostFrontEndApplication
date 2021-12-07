@@ -24,7 +24,7 @@
                 <h3 id="tableDisplay">N/A Table</h3>
                 <h4 id="queueTime">Queue Time: N/A</h4>
                 <h4 id="queueTotal">Queue Size: N/A</h4>
-                <button>Refresh</button>
+                <button class="button tempTable" onclick="refreshQueue()">Refresh</button>
             </div>
             <div class="item2">
                 <table class="display">
@@ -62,14 +62,20 @@
                 connect();
                 console.log("-BB");
 
-                //Getting session data of table item
+                //Sessions storage id, queueSize request string
+                var tableID = sessionStorage.getItem("id");
+                var request = "getQueueSize:table:" + tableID;
+
+                setUpTemplate();
+            }
+
+            function setUpTemplate(){
+                //Setting up table title
                 var tableSelected = sessionStorage.getItem("table");
                 document.getElementById("tableDisplay").innerHTML = "Selection: " + tableSelected;
 
-                //Getting session data of type item
+                //Setting up table display + info
                 var type = sessionStorage.getItem("type");
-
-                var tableID = sessionStorage.getItem("tableID");
 
                 //Corner table
                 if (type.includes('cornerBooth') == true) {
@@ -106,10 +112,19 @@
                 }
             }
 
-            //Server reply function
-            //Splits reply into array, checks number of groups in queue and responds accordingly
-            function checkQueue1(reply) {
-                var replyArray = reply.split(":");
+            async function refreshQueue(){
+                console.log("Queue refresh!");
+
+                var tableID = sessionStorage.getItem("id");
+                var request = "getQueueSize:table:" + tableID;
+
+                sendRequest(request);
+                while (response == null) {
+                    await new Promise(r => setTimeout(r, 100));
+                }
+                console.log("[5]: " + response);
+
+                var replyArray = response.split(":");
 
                 if (replyArray[2] > 0) {
                     var time = replyArray[2] * 45.00;
