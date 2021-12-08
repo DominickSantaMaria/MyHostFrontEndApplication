@@ -208,6 +208,10 @@
                 }
                 console.log("[5]: " + response);
 
+                //Session storage information
+                var reserveInfo = name + ":" + tableID + ":" + number + ":" + partySize + ":Ducksworth's Taphouse and Grill:";
+                sessionStorage.setItem("resInfo", reserveInfo);
+
                 alert("Reservation confirmed!");
                 location.href = "UserHomeScreen.html";
             }
