@@ -60,12 +60,14 @@ socket to finish.
 2. Figure out how to make interactive pages for the table configurations / choose table in restaurant
 3. Create booking screen for restaurant
 4. Created test functions for socket string parsing for some of the html pages
+5. Work on functions in tableTemplate.html for confirming group reservation to send to server.
+6. Clean up User Home Screen, fix font discrepancy 
 
 # Next Steps:
 <<<<<<< HEAD
-1. Work out client-server requests for smooth transition of connecting backend to frontend: **In progress**
-2. Work on functions in tableTemplate.html for confirming group reservation to send to server. **In progress**
-3. Clean up User Home Screen, fix font discrepancy 
+1. Work out client-server requests for smooth transition of connecting backend to frontend: **Completed, finishing testing**
+2. Adjust background images for pages **In Progress**
+3. Format current reservation with queue time on UserHomePage **InProgress**
 
 #On Hold Steps:
 1. Create web notification that a different table is available: **Canceled --> Automatically change table is opt in**
