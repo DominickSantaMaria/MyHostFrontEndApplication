@@ -3,6 +3,35 @@
     <head>
         <title>Table Details</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body, html {
+                height: 100%;
+            }
+
+            .imageTest {
+                background-image: url('images/back.jpg');
+                filter: blur(5px);
+                -webkit-filter: blur(5px);
+                -moz-filter: blur(5px);
+                -o-filter: blur(5px);
+                -ms-filter: blur(5px);
+                height: 100%;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+
+            .gridTest {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -40%);
+                z-index: 2;
+                width: 80%;
+                padding: 20px;
+                text-align: center;
+            }
+        </style>
         <link rel="stylesheet" type="text/css" href="tableTempStyles.css">
         <script src="../webjars/jquery/jquery.min.js"></script>
         <script src="../webjars/sockjs-client/sockjs.min.js"></script>
@@ -10,7 +39,6 @@
         <script src="../app2.js"></script>
     </head>
     <body>
-
         <div class="header">
             <ul class="navBar">
                 <li><h1><a href="UserHomeScreen.html" style="text-decoration: none; color: inherit">MyHost</a></h1></li>
@@ -19,7 +47,14 @@
             </ul>
         </div>
 
-        <div class="grid-container">
+        <br>
+        <br>
+        <div class="imageTest"></div>
+
+        <div class="gridTest">
+            <br>
+            <br>
+            <div class="grid-container">
             <div class="item1">
                 <h3 id="tableDisplay">N/A Table</h3>
                 <h4 id="queueTime">Queue Time: N/A</h4>
@@ -53,6 +88,8 @@
             <div class="item5">
                 <button class="button tempTable" id="No" onclick="goBack()">I've changed my mind!</button>
             </div>
+        </div>
+
         </div>
 
         <script>
