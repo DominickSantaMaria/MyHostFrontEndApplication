@@ -92,11 +92,11 @@ html {
     margin: 5px;
 }
 
-.display {
+.tableDisplay {
     background-color: antiquewhite;
     padding: 5px 10px;
     border-radius: 5px;
-    color: #777;
+    color: black;
     table-layout: auto;
     align-content: center;
     overflow: visible;
@@ -154,6 +154,7 @@ html {
 
 .layout {
     border: 2px solid #6feaf6;
+    background-color: antiquewhite;
 }
 
 .roundTable:hover{
