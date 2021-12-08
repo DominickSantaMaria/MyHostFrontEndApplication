@@ -163,6 +163,7 @@
 
                 var replyArray = response.split(":");
 
+                //Adding 45 minutes per group in queue plus 45 min for currently seated group
                 if (replyArray[2] > 0) {
                     var time = (replyArray[2] * 45.00) + 45.00;
                     if (time >= 60) {
