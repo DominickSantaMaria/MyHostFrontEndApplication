@@ -20,6 +20,7 @@
 
 html {
   font-family: "Lucida Sans", sans-serif;
+  overflow: hidden;
 }
 
 .header {
@@ -158,16 +159,18 @@ color:#FFFFFF;}
 } 
 
 .indexContent{
-  height: 100%;
-  background-position: center;
+  //background-position: center;
   background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-attachment: fixed;
+  position: relative;
   filter: blur(5px);
   -webkit-filter: blur(5px);
   -moz-filter: blur(5px);
   -o-filter: blur(5px);
-  -ms-filter: blur(5px); 
-
+  -ms-filter: blur(5px);
 }
+
 </style>
 </head>
     <body>
@@ -181,14 +184,12 @@ color:#FFFFFF;}
 
         <br>
         <br>
-        <br>
 
         <div class="indexContent">
-            <img src="/images/back.jpg" width= "1000" height= "800">
+            <img src="images/back.jpg" width= "100%" height= "auto">
         </div>
 
-        <div class=bg-image></div>
-        <div class="btns2">
+        <div class= "btns2">
             <h1 class="header2">Active Reservations</h1>
             <div class="col-s-3 menu">
                 <div class="column" style="background-color:#c4aead;">
@@ -201,10 +202,9 @@ color:#FFFFFF;}
                         <br>
                         <li><a href="UserHomeScreen.html">Back to Home Screen</li>
                         </ul>
-                    </div>
                 </div>
             </div>
-
+        </div>
 
         <script>
             let Settings = document.querySelectorAll('.btns li');
@@ -215,5 +215,6 @@ color:#FFFFFF;}
                 });
             });
         </script>
+
     </body>
 </html>
