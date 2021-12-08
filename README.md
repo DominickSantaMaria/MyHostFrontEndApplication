@@ -49,6 +49,11 @@ a wait time and number of groups ahead of you in queue for a specific table
 socket to finish. 
 3. Added reservation creation code for creating group that will be added to queue with necessary information.
 
+07-08 Dec 2021:
+1. Added background image to tableTemplate and formatted background for Active Reservations
+2. Created session storage item on tableTemplate to send to User Home Page to display
+3. Create code to parse information set by session storage item to display to user (their current reservation)
+
 -----------------------------------------------
 # Completed Steps:
 1. Organize and develop created home screen
