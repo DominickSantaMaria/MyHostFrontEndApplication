@@ -88,8 +88,9 @@ html {
 }
 .btns2{
   position:absolute;
-  top: 325px;;
-  margin-left: 0px;
+  top: 450px;
+    margin-bottom: 100px;
+    margin-left: 0px;
   width: 1200px; 
 }
 
@@ -149,6 +150,12 @@ html {
 
 
 </style>
+
+    <script src="../webjars/jquery/jquery.min.js"></script>
+    <script src="../webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="../webjars/stomp-websocket/stomp.min.js"></script>
+    <script src="../app2.js"></script>
+
 </head>
 <body>
 
@@ -164,46 +171,59 @@ html {
 
     <h1 class="head1">Change Username</h1>
     <div class="col-s-3 menu">
-      <input type="text" size ="25" style = "height:60px; font-size:20pt;" placeholder="New Username" name="uname" required><br><br>
-      <label>
-      </label><br><br>
-      
+        <input type="text" size ="22" style = "height:60px; font-size:20pt;" placeholder="Current Username" name="cname" required><br><br>
+        <input type="text" size ="22" style = "height:60px; font-size:20pt;" placeholder="New Username" name="uname" required><br><br>
     </div>
-
+    <br><br><br><br><br><br><br><br>
   <div class="btns2" size = "25">
-     <div class="col-3 col-s-3 menu" size = "25">
+     <div class="col-3 col-s-3 menu" size = "20">
           <ul>
             <li>Confirm Username</li>
            
             <li>Back to Settings</li>
-          
           </ul>
-          </div>
-        </div>
-        </div>
+     </div>
+  </div>
+</div>
 
 
 </body>
 
 <script>
-    let confirmUserName = document.querySelectorAll('.btns2 li');
 
-    confirmUserName.forEach((item, index) => {
-      item.addEventListener('click', (event) => {
-        if (event.currentTarget.innerHTML == "Confirm Username") {
-          alert(`${event.currentTarget.innerHTML} item was click`);
-          window.location = "UserHomeScreen.html"    // NEED TO ACTUALLY CODE LOGIN DETAILS 
-        }
-       
-      });
+    let listItems = document.querySelectorAll('.btns2 li');
+
+    listItems.forEach((item, index) => {
+        item.addEventListener('click', (event) => {
+            if (event.currentTarget.innerHTML == "Confirm Username") {
+                changeUserName();
+            }
+            if (event.currentTarget.innerHTML == "Back to Settings") {
+                window.location = "account.html";
+            }
+        });
     });
 
-    let Settings = document.querySelectorAll('.btns2 li');
-    Settings.forEach((item, index) => {
-            item.addEventListener('click', (event) => {
-                window.location = "account.html";
-            });
-        });
+    async function changeUserName() {
+        // [1]
+        sendRequest("changeUser:"+document.getElementsByName('cname')[0].value+":"+document.getElementsByName('uname')[0].value);
+        while (response == null) {
+            await new Promise(r => setTimeout(r, 100));
+        }
+        var splitResponse = response.split(":");
+        console.log("[1]: " + response);
+        if (response == "changeUser:passed") {
+            alert("Username changed!");
+            window.location = "UserHomeScreen.html"
+        } else {
+            alert(splitResponse[2]);
+        }
+    }
+
+</script>
+
+
+
 </script>
 </html>
 
