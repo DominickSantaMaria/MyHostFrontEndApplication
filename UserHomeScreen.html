@@ -108,9 +108,26 @@ p {text-align: center;}
     text-align:center;
     background-color: #fde1d8;
 }
-.textcenter{
-    text-align:center;
+
+.res{
+    padding: 20px;
+    background-color: antiquewhite;
+    border: solid 2px #FB8064;
+    border-radius: 5px;
 }
+
+.cancelBtn {
+    background-color: #FB8064;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -151,7 +168,7 @@ p {text-align: center;}
 
   <div class="column" style="background-color:#c4aead;">
     <h2 class=header1>Current Reservations</h2>
-    <p class=textcenter id="res">No reservations made yet!</p>
+    <p class=textcenter><div class="res" id="res">No reservations made yet!</div></p>
   </div>
 
   <div class="column" style="background-color:#c4aead;">
@@ -195,7 +212,8 @@ p {text-align: center;}
             var resDisplay = "<b>" + resArray[4] + "</b><br>" +
             "Group Name: " + resArray[0] + "<br>" +
             "Group Size: " + resArray[3] + "<br>" +
-            "Queue Time: " + queueTime;
+            "Queue Time: " + queueTime + "<br>" +
+            "<button class='cancelBtn'>Cancel Reservation</button>";
 
             test.innerHTML = resDisplay;
         }
