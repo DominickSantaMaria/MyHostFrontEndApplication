@@ -213,9 +213,13 @@ p {text-align: center;}
             "Group Name: " + resArray[0] + "<br>" +
             "Group Size: " + resArray[3] + "<br>" +
             "Queue Time: " + queueTime + "<br>" +
-            "<button class='cancelBtn'>Cancel Reservation</button>";
+            "<button class='cancelBtn' onclick='cancelFunc'>Cancel Reservation</button>";
 
             test.innerHTML = resDisplay;
+        }
+
+        function cancelFunc() {
+            alert("Cancel test");
         }
 
         //Polling function for updates
@@ -228,6 +232,8 @@ p {text-align: center;}
 
         restaurants.forEach((item, index) => {
             item.addEventListener('click', (event) => {
+                var restaurant = item.innerHTML;
+                sessionStorage.setItem("restaurant", restaurant);
                 window.location = "tablemap.html";
             });
         });

@@ -204,6 +204,7 @@
                 var number = document.forms["reservation"]["phoneNumber"].value;
                 var partySize = document.forms["reservation"]["partySize"].value;
                 var optIN = "n/a";
+                var restaurant = sessionStorage.getItem("restaurant");
 
                 //Making sure fields are not null
                 if(name === "" || number === "" || partySize === ""){
@@ -232,7 +233,7 @@
                 console.log("[5]: " + response);
 
                 //Session storage information
-                var reserveInfo = name + ":" + tableID + ":" + number + ":" + partySize + ":Ducksworth's Taphouse and Grill";
+                var reserveInfo = name + ":" + tableID + ":" + number + ":" + partySize + ":" + restaurant;
                 sessionStorage.setItem("resInfo", reserveInfo);
 
                 alert("Reservation confirmed!");

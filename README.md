@@ -54,6 +54,9 @@ socket to finish.
 2. Created session storage item on tableTemplate to send to User Home Page to display
 3. Create code to parse information set by session storage item to display to user (their current reservation)
 4. Set up test polling function on user home page to check for reservation updates.
+5. Added cancel button for reservation
+6. Adjusted validation for user entering number higher than max seats for table
+7. Restaurant name changes depending on what button is pressed
 
 -----------------------------------------------
 # Completed Steps:
