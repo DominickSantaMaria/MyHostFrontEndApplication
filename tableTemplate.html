@@ -208,6 +208,11 @@
                 //Making sure fields are not null
                 if(name === "" || number === "" || partySize === ""){
                     document.getElementById("No").setAttribute("disabled");
+                }else if(partySize > document.forms["reservation"]["partySize"].max){
+                    alert("Party size can not be more than max amount of seats.");
+                    document.getElementById("No").setAttribute("disabled");
+                }else{
+
                 }
 
                 if(document.forms["reservation"]["optIn"].checked){
