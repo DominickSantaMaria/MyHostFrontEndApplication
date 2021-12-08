@@ -164,7 +164,7 @@
                 var replyArray = response.split(":");
 
                 if (replyArray[2] > 0) {
-                    var time = replyArray[2] * 45.00;
+                    var time = (replyArray[2] * 45.00) + 45.00;
                     if (time >= 60) {
                         var adjustTime = time / 60.00;
                         time = adjustTime;
@@ -173,8 +173,25 @@
                     document.getElementById("queueTime").innerHTML = "Current Wait: " + time + " hrs.";
                     document.getElementById("queueTotal").innerHTML = "Groups in Queue: " + replyArray[2];
                 } else {
-                    document.getElementById("queueTime").innerHTML = "Current Wait: Available";
-                    document.getElementById("queueTotal").innerHTML = "Groups in Queue: " + replyArray[2];
+
+                    //Checking if table has a group already seated not in queue
+                    var tableSeated = "isFree:table:" + tableID;
+                    sendRequest(tableSeated);
+
+                    while (response == null) {
+                      await new Promise(r => setTimeout(r, 100));
+                    }
+
+                    console.log("[1]: " + response);
+                    var responseArray = response.split(":");
+
+                    if(responseArray[2].includes("false")){
+                        document.getElementById("queueTime").innerHTML = "Current Wait: 45 min.";
+                        document.getElementById("queueTotal").innerHTML = "Groups in Queue: " + replyArray[2];
+                    }else{
+                        document.getElementById("queueTime").innerHTML = "Current Wait: Available";
+                        document.getElementById("queueTotal").innerHTML = "Groups in Queue: " + replyArray[2];
+                    }
                 }
             }
 
