@@ -171,7 +171,7 @@ p {text-align: center;}
   <div class="btn-groupActiveRes" style="text-align: center;">
     <button style=" bottom:10; text-align:center; width:120px">Active Reservations</button>
 </div>
-<
+
 
          <script>
 
@@ -180,6 +180,9 @@ p {text-align: center;}
             console.log(reservation);
 
             reservationSetUp(reservation);
+
+            //Uncomment when ready to tell poll function for isReady, polling works
+            //setTimeout(refreshTime, 30000);
         }
 
         function reservationSetUp(reservation){
@@ -195,6 +198,12 @@ p {text-align: center;}
             "Queue Time: " + queueTime;
 
             test.innerHTML = resDisplay;
+        }
+
+        //Polling function for updates
+        function refreshTime(){
+            console.log("It's been 5 seconds!");
+            setTimeout(refreshTime, 30000);
         }
 
         let restaurants = document.querySelectorAll('.btn-group button');

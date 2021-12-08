@@ -53,6 +53,7 @@ socket to finish.
 1. Added background image to tableTemplate and formatted background for Active Reservations
 2. Created session storage item on tableTemplate to send to User Home Page to display
 3. Create code to parse information set by session storage item to display to user (their current reservation)
+4. Set up test polling function on user home page to check for reservation updates.
 
 -----------------------------------------------
 # Completed Steps:
