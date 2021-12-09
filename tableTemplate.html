@@ -3,6 +3,7 @@
     <head>
         <title>Table Details</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        //Extra styles for tableTemplate
         <style>
             body, html {
                 height: 100%;
@@ -39,6 +40,7 @@
         <script src="../app2.js"></script>
     </head>
     <body>
+        <!--Navigation Bar-->
         <div class="header">
             <ul class="navBar">
                 <li><h1><a href="UserHomeScreen.html" style="text-decoration: none; color: inherit">MyHost</a></h1></li>
@@ -49,18 +51,23 @@
 
         <br>
         <br>
+        <!--Background Image-->
         <div class="imageTest"></div>
 
+        <!--CSS Grid for setting up table information and reservation form-->
         <div class="gridTest">
             <br>
             <br>
             <div class="grid-container">
+            <!--Header for details with info on wait time and queue size-->
             <div class="item1">
                 <h3 id="tableDisplay">N/A Table</h3>
                 <h4 id="queueTime">Queue Time: N/A</h4>
                 <h4 id="queueTotal">Queue Size: N/A</h4>
+                <!--Refresh button for time-->
                 <button class="button tempTable" onclick="refreshQueue()">Refresh</button>
             </div>
+            <!--Table display section showing shape of table and how many it can seat-->
             <div class="item2">
                 <table class="display">
                     <tr>
@@ -75,6 +82,7 @@
                     </tr>
                 </table>
             </div>
+            <!--Reservation for area. Form element to take necessary information and call chooseTable() function-->
             <div class="item4">
                 <form id="reservationForm" name="reservation">
                     <input type="text" id="name" name="name" placeholder="Group Name" required/>
@@ -85,6 +93,7 @@
                     <button class="button tempTable" id="Yes" onclick="chooseTable()">Choose this table!</button>
                 </form>
             </div>
+            <!--Optional button to go back to the table map, calls goBack() function-->
             <div class="item5">
                 <button class="button tempTable" id="No" onclick="goBack()">I've changed my mind!</button>
             </div>
@@ -92,20 +101,20 @@
 
         </div>
 
+        <!--Script for tableTemplate html-->
         <script>
-            //Window Load
+            //Window Load for creating web socket connection and setting up info passed for template
             window.onload = function () {
+                //Starting web socket
                 console.log("-AA");
                 connect();
                 console.log("-BB");
 
-                //Sessions storage id, queueSize request string
-                var tableID = sessionStorage.getItem("id");
-                var request = "getQueueSize:table:" + tableID;
-
+                //Calling function to set up template with necessary information
                 setUpTemplate();
             }
 
+            //Function that fills in: table info, table image, and how many seats available
             function setUpTemplate(){
                 //Setting up table title
                 var tableSelected = sessionStorage.getItem("table");
@@ -149,18 +158,22 @@
                 }
             }
 
+            //Function for refreshing queue and updating queue info
             async function refreshQueue(){
                 console.log("Queue refresh!");
 
+                //Session storage, getting information for request to server
                 var tableID = sessionStorage.getItem("id");
                 var request = "getQueueSize:table:" + tableID;
 
+                //Sending request and waiting for response
                 sendRequest(request);
                 while (response == null) {
                     await new Promise(r => setTimeout(r, 100));
                 }
                 console.log("[5]: " + response);
 
+                //Parsing response into array
                 var replyArray = response.split(":");
 
                 //Adding 45 minutes per group in queue plus 45 min for currently seated group
@@ -171,6 +184,7 @@
                         time = adjustTime;
                     }
 
+                    //Applying strings to html
                     document.getElementById("queueTime").innerHTML = "Current Wait: " + time + " hrs.";
                     document.getElementById("queueTotal").innerHTML = "Groups in Queue: " + replyArray[2];
                 } else {
@@ -216,6 +230,7 @@
 
                 }
 
+                //Checking if opted in or not
                 if(document.forms["reservation"]["optIn"].checked){
                     optIN = true;
                 }else{
@@ -226,6 +241,7 @@
                 var groupInfo = "queue:table:" + tableID + ":" + name + ":" + number + ":" + partySize + ":" + optIN;
                 console.log(groupInfo);
 
+                //Sending request
                 sendRequest(groupInfo);
                 while (response == null) {
                     await new Promise(r => setTimeout(r, 100));

@@ -147,7 +147,7 @@ div.btn-group button, div.btn-groupPrev button, div.btn-groupActiveRes button, .
         <ul class="navBar">
             <li><h1><a href="UserHomeScreen.html" style="text-decoration: none; color: inherit">MyHost</a></h1></li>
             <li style="float:right"><button class="headerButton" type=button><a href="Admin/adminHomePage.html" style="text-decoration: none; color: inherit" align="right">Admin View (Beta)</a></button></li>
-            <li style="float:right"><button class="headerButton" type=button><a href="home.html" style="text-decoration: none; color: inherit" align="right">Logout</button></a> </li>
+            <li style="float:right"><button class="headerButton" type=button onclick="logOutClear()"><a href="home.html" style="text-decoration: none; color: inherit" align="right">Logout</button></a> </li>
             <li style="float:right"><button class="headerButton" type=button><a href="account.html" style="text-decoration: none; color: inherit"align="right">Account</button></a></li>
         </ul>
     </div>
@@ -225,8 +225,35 @@ div.btn-group button, div.btn-groupPrev button, div.btn-groupActiveRes button, .
             test.innerHTML = resDisplay;
         }
 
-        function cancelFunc() {
-            alert("Cancel test");
+        async function cancelFunc() {
+            //String received looks like --> Name : Table ID : Phone Num : Party Size : Restaurant Name
+            var reservation = sessionStorage.getItem("resInfo");
+
+            var requestArray = reservation.split(":");
+            var request = "cancelReservation:" + requestArray[0] + ":" + requestArray[2] + ":" + requestArray[3];
+
+            sendRequest(request);
+            while (response == null) {
+                await new Promise(r => setTimeout(r, 100));
+            }
+            console.log("[8]: " + response);
+
+            var resArray = response.split(":");
+
+            if(resArray[1].includes("true")){
+                var resDisplay = "<p class='info'><b>No reservations made yet!</b></p>";
+                alert("Reservation cancelled!");
+            }else if(resArray[1].includes("false")){
+                var display = document.getElementById("res");
+                var resDisplay = "<p class='info'><b>Your table is ready. Contact restaurant about cancellation from this point.</b></p>" +
+                 "<p><b>" + requestArray[4] + "'s Phone Number:</b></p>" + "<p>(704)123-4567<p>";
+                "You are already/or being seated!";
+
+                res.innerHTML = resDisplay;
+                alert("You are already seated or being seated now!");
+            }else{
+
+            }
         }
 
         //Polling function for updates
@@ -268,6 +295,12 @@ div.btn-group button, div.btn-groupPrev button, div.btn-groupActiveRes button, .
 
                 queueDisplay.innerHTML = "Queue Time: " + time + " hrs.";
             }
+        }
+
+        //Clears cache for session for prototype purposes for logging out
+        function logOutClear(){
+            sessionStorage.clear();
+            location.href = "home.html";
         }
 
         let restaurants = document.querySelectorAll('.btn-group button');

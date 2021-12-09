@@ -26,6 +26,7 @@
 
         <div class="header">
             <ul class="navBar">
+                <!--Navigation bar-->
                 <li><h1><a href="UserHomeScreen.html" style="text-decoration: none; color: inherit">MyHost</a></h1></li>
                 <li style="float:right"><button class="headerButton" type=button><a href="home.html" style="text-decoration: none; color: inherit" align="right">Logout</button></a> </li>
                 <li style="float:right"><button class="headerButton" type=button><a href="account.html" style="text-decoration: none; color: inherit" align="right">Account</button></a></li>
@@ -37,10 +38,13 @@
                 <div class="row">
 
                   <div class="col-10 col-s-9">
+                    <!--Row for displaying Back To Home and Refresh buttons-->
                     <button class="button" type="button" id="backToHome" onclick="goBack()">Back to Home</button>
                     <button class="button" type="button" id="refresh" onclick="refresh()">Refresh</button>
+                    <!--Placeholder variable to display restaurant name that was passed from User Home Screen-->
                     <h2 id="resName">N/A</h2>
                       <h3>Table Guide</h3>
+                      <!--Table guide display for what each color means-->
                       <ul class="tableGuide">
                           <li>
                               <div class="table available"></div>
@@ -50,9 +54,13 @@
                               <div class="table unavailable"></div>
                               <small>Unavailable</small>
                           </li>
+                          <li>
+                              <div class="table"></div>
+                              <small>Table</small>
+                          </li>
                       </ul>
 
-
+                      <!--Table map layout section-->
                       <div class="tableDisplay">
 
                           <table class="layout">
@@ -142,11 +150,16 @@
                       </div>
                   </div>
                 </div>
+
+        <!--Script used for Table Map page-->
         <script>
+            //Onload function for setting up restaurant name, connecting to websocket, and starting refresh function to update tables
             window.onload = function (){
+                //Getting session item to update restaurant name for map
                 var name = sessionStorage.getItem("restaurant");
                 console.log(name);
 
+                //Starting connection to web socket
                 connect();
 
                 document.getElementById("resName").innerHTML = name;
@@ -155,6 +168,7 @@
                 setTimeout(refreshMap, 5000);
             }
 
+            //Getting each class for each type of table for onclick events
             const cornerBooths = document.getElementsByClassName('cornerBooth');
             const longTables = document.getElementsByClassName('longTable');
             const roundTables = document.getElementsByClassName('roundTable');
@@ -164,10 +178,13 @@
             Array.from(cornerBooths).forEach(table => {
                 table.addEventListener('click', () => {
                     var tableInfo = table.innerHTML;
-                
+
+                    //Stores table information in sessionStorage items to pass to tableTemplate.html
                     sessionStorage.setItem("table", tableInfo);
                     sessionStorage.setItem("type", "cornerBooth");
                     sessionStorage.setItem("id", table.id);
+
+                    //Changing location to tableTemplate
                     location.href = "tableTemplate.html";
                 });
             });
@@ -177,9 +194,12 @@
                 table.addEventListener('click', () => {
                     var tableInfo = table.innerHTML;
 
+                    //Stores table information in sessionStorage items to pass to tableTemplate.html
                     sessionStorage.setItem("table", tableInfo);
                     sessionStorage.setItem("type", "longTable");
                     sessionStorage.setItem("id", table.id);
+
+                    //Changing location to tableTemplate
                     location.href = "tableTemplate.html";
                 });
             });
@@ -188,10 +208,13 @@
             Array.from(roundTables).forEach(table => {
                 table.addEventListener('click', () => {
                     var tableInfo = table.innerHTML;
-                
+
+                    //Stores table information in sessionStorage items to pass to tableTemplate.html
                     sessionStorage.setItem("table", tableInfo);
                     sessionStorage.setItem("type", "roundTable");
                     sessionStorage.setItem("id", table.id);
+
+                    //Changing location to tableTemplate
                     location.href = "tableTemplate.html";
                 });
             });
@@ -200,38 +223,51 @@
             Array.from(squareTables).forEach(table => {
                 table.addEventListener('click', () => {
                     var tableInfo = table.innerHTML;
-                
+
+                    //Stores table information in sessionStorage items to pass to tableTemplate.html
                     sessionStorage.setItem("table", tableInfo);
                     sessionStorage.setItem("type", "squareTable");
                     sessionStorage.setItem("id", table.id);
+
+                    //Changing location to tableTemplate
                     location.href = "tableTemplate.html";
                 });
             });
 
+            //Function for taking user back to user home screen
             function goBack() {
                 window.location = "UserHomeScreen.html";
             }
 
             //Timeout function to refresh table map
             async function refreshMap(){
+                //Calls map update function
                 refresh();
                 console.log("It's been 5 seconds, updating map...");
+
+                //Calls itself after 5 seconds
                 setTimeout(refreshMap, 5000);
             }
 
             //Function for fetching table availability
             async function refresh(){
+                //Sending request to server
                 sendRequest("tableAvailability");
                 console.log("In async function in tablemap");
+
+                //Wait function for response
                 while (response == null) {
                   await new Promise(r => setTimeout(r, 100));
                 }
                 console.log("[8]: " + response);
-
                 console.log("Parsing table info...");
+
+                //Splitting reply by a delimiter (:) into an array for display
                 var replyArray = response.split(":");
+                //Count variable
                 var count = 0;
 
+                //Loop to go through array and update each table depending on if they are available or not
                 console.log("Starting table color loop...");
                 for (var x = 1; x < 24; x++) {
                     if (replyArray[count + 2].includes("true")) {
@@ -239,6 +275,7 @@
                     } else {
                         document.getElementById(replyArray[count + 1]).style = "background-color: #FE542D";
                     }
+                    //Increment by 3 every loop
                     count += 3;
                 }
 

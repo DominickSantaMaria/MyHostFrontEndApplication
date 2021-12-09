@@ -61,6 +61,11 @@ socket to finish.
 9. Updated UserHomePage for function to be called when cancelling, just need backend code, also updated Admin View --> Admin View (Beta)
 10. Added polling function to table map to update every 5 seconds
 
+09 Dec 2021:
+1. Final touches. Implemented cancel function. Will either cancel reservation if in queue or tell customer to contact restaurant if ready
+2. Added comments to tableTemplate and tableMap htmls
+3. Session is cleared when logging out for prototype purposes
+
 -----------------------------------------------
 # Completed Steps:
 1. Organize and develop created home screen
