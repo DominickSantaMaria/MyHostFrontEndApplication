@@ -3,6 +3,19 @@
     <head>
         <title>Table Map</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body, html {
+                height: 100%;
+            }
+
+            .textAdjustment{
+                position: absolute;
+                z-index: 2;
+                width: 80%;
+                padding: 20px;
+            }
+
+        </style>
         <link rel="stylesheet" type="text/css" href="styles.css">
         <script src="../webjars/jquery/jquery.min.js"></script>
         <script src="../webjars/sockjs-client/sockjs.min.js"></script>
@@ -19,119 +32,126 @@
             </ul>
         </div>
 
-    
+        <br>
+            <div class="textAdjustment">
+                <div class="row">
 
-        <div class="row">
-
-          <div class="col-6 col-s-9">
-            <button class="button" type="button" id="backToHome" onclick="goBack()">Back to Home</button>
-            <button class="button" type="button" id="refresh" onclick="refresh()">Refresh</button>
-            <h2>Ducksworth's Taphouse and Grill</h2>
-              <h3>Table Guide</h3>
-              <ul class="tableGuide">
-                  <li>
-                      <div class="table available"></div>
-                      <small>Available</small>
-                  </li>
-                  <li>
-                      <div class="table unavailable"></div>
-                      <small>Unavailable</small>
-                  </li>
-              </ul>
+                  <div class="col-10 col-s-9">
+                    <button class="button" type="button" id="backToHome" onclick="goBack()">Back to Home</button>
+                    <button class="button" type="button" id="refresh" onclick="refresh()">Refresh</button>
+                    <h2 id="resName">N/A</h2>
+                      <h3>Table Guide</h3>
+                      <ul class="tableGuide">
+                          <li>
+                              <div class="table available"></div>
+                              <small>Available</small>
+                          </li>
+                          <li>
+                              <div class="table unavailable"></div>
+                              <small>Unavailable</small>
+                          </li>
+                      </ul>
 
 
-              <div class="tableDisplay">
+                      <div class="tableDisplay">
 
-                  <table class="layout">
-                      <!--Row 1-->
-                      <tr>
-                          <td>
-                              <div class="cornerBooth" id="1">Corner Booth 1</div>
-                          </td>
-                          <td style="vertical-align: top">
-                              <div class="longTable" id="2">Booth 2</div>
-                          </td>
-                          <td style="vertical-align: top">
-                              <div class="longTable" id="3">Booth 3</div>
-                          </td>
-                          <td style="vertical-align: top">
-                              <div class="longTable" id="4">Booth 4</div>
-                          </td>
-                          <td style="vertical-align: top">
-                              <div class="longTable" id="5">Booth 5</div>
-                          </td>
-                          <td style="vertical-align: top">
-                              <div class="longTable" id="6">Booth 6</div>
-                          </td>
-                          <td>
-                              <div class="cornerBooth" id="7">Corner Booth 7</div>
-                          </td>
-                      </tr>
-                      <!--Row 2-->
-                      <tr>
-                          <td>
-                              <div class="roundTable" id="8">Table 8</div>
-                          </td>
-                          <td align="right">
-                              <div class="squareTable" id="9">Table 9</div>
-                          </td>
-                          <td>
-                              <div class="longTable" id="10">Table 10</div>
-                          </td>
-                          <td>
-                              <div class="longTable" id="11">Table 11</div>
-                          </td>
-                          <td>
-                              <div class="longTable" id="12">Table 12</div>
-                          </td>
-                          <td>
-                              <div class="squareTable" id="13">Table 13</div>
-                          </td>
-                          <td align="right">
-                              <div class="roundTable" id="14">Table 14</div>
-                          </td>
-                      </tr>
-                      <!--Row 3-->
-                      <tr>
-                          <td>
-                              <div class="roundTable" id="15">Table 15</div>
-                          </td>
-                          <td align="right">
-                              <div class="squareTable" id="16">Table 16</div>
-                          </td>
-                          <td>
-                              <div class="longTable" id="17">Table 17</div>
-                          </td>
-                          <td>
-                              <div class="longTable" id="18">Table 18</div>
-                          </td>
-                          <td>
-                              <div class="longTable" id="19">Table 19</div>
-                          </td>
-                          <td>
-                              <div class="squareTable" id="20">Table 20</div>
-                          </td>
-                          <td align="right">
-                              <div class="roundTable" id="21">Table 21</div>
-                          </td>
-                      </tr>
-                      <!--Row 4-->
-                      <tr>
-                          <td>
-                              <div class="roundTable" id="22">Table 22</div>
-                          </td>
-                          <td colspan="5"></td>
-                          <td align="right">
-                              <div class="roundTable" id="23">Table 23</div>
-                          </td>
-                      </tr>
-                  </table>
-              </div>
-          </div>
-        </div>
-
-    
+                          <table class="layout">
+                              <!--Row 1-->
+                              <tr>
+                                  <td>
+                                      <div class="cornerBooth" id="1">Corner Booth 1</div>
+                                  </td>
+                                  <td style="vertical-align: top">
+                                      <div class="longTable" id="2">Booth 2</div>
+                                  </td>
+                                  <td style="vertical-align: top">
+                                      <div class="longTable" id="3">Booth 3</div>
+                                  </td>
+                                  <td style="vertical-align: top">
+                                      <div class="longTable" id="4">Booth 4</div>
+                                  </td>
+                                  <td style="vertical-align: top">
+                                      <div class="longTable" id="5">Booth 5</div>
+                                  </td>
+                                  <td style="vertical-align: top">
+                                      <div class="longTable" id="6">Booth 6</div>
+                                  </td>
+                                  <td>
+                                      <div class="cornerBooth" id="7">Corner Booth 7</div>
+                                  </td>
+                              </tr>
+                              <!--Row 2-->
+                              <tr>
+                                  <td>
+                                      <div class="roundTable" id="8">Table 8</div>
+                                  </td>
+                                  <td align="right">
+                                      <div class="squareTable" id="9">Table 9</div>
+                                  </td>
+                                  <td>
+                                      <div class="longTable" id="10">Table 10</div>
+                                  </td>
+                                  <td>
+                                      <div class="longTable" id="11">Table 11</div>
+                                  </td>
+                                  <td>
+                                      <div class="longTable" id="12">Table 12</div>
+                                  </td>
+                                  <td>
+                                      <div class="squareTable" id="13">Table 13</div>
+                                  </td>
+                                  <td align="right">
+                                      <div class="roundTable" id="14">Table 14</div>
+                                  </td>
+                              </tr>
+                              <!--Row 3-->
+                              <tr>
+                                  <td>
+                                      <div class="roundTable" id="15">Table 15</div>
+                                  </td>
+                                  <td align="right">
+                                      <div class="squareTable" id="16">Table 16</div>
+                                  </td>
+                                  <td>
+                                      <div class="longTable" id="17">Table 17</div>
+                                  </td>
+                                  <td>
+                                      <div class="longTable" id="18">Table 18</div>
+                                  </td>
+                                  <td>
+                                      <div class="longTable" id="19">Table 19</div>
+                                  </td>
+                                  <td>
+                                      <div class="squareTable" id="20">Table 20</div>
+                                  </td>
+                                  <td align="right">
+                                      <div class="roundTable" id="21">Table 21</div>
+                                  </td>
+                              </tr>
+                              <!--Row 4-->
+                              <tr>
+                                  <td>
+                                      <div class="roundTable" id="22">Table 22</div>
+                                  </td>
+                                  <td colspan="5"></td>
+                                  <td align="right">
+                                      <div class="roundTable" id="23">Table 23</div>
+                                  </td>
+                              </tr>
+                          </table>
+                      </div>
+                  </div>
+                </div>
         <script>
+            window.onload = function (){
+                var name = sessionStorage.getItem("restaurant");
+                console.log(name);
+
+                connect();
+
+                document.getElementById("resName").innerHTML = name;
+            }
+
             const cornerBooths = document.getElementsByClassName('cornerBooth');
             const longTables = document.getElementsByClassName('longTable');
             const roundTables = document.getElementsByClassName('roundTable');
@@ -203,8 +223,8 @@
                 var count = 0;
 
                 console.log("Starting table color loop...");
-                for (var x = 1; x < 14; x++) {
-                    if (replyArray[count + 2].includes("true") == true) {
+                for (var x = 1; x < 24; x++) {
+                    if (replyArray[count + 2].includes("true")) {
                         document.getElementById(replyArray[count + 1]).style = "background-color: #6feaf6";
                     } else {
                         document.getElementById(replyArray[count + 1]).style = "background-color: #FE542D";

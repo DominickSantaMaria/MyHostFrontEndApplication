@@ -3,6 +3,35 @@
     <head>
         <title>Table Details</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body, html {
+                height: 100%;
+            }
+
+            .imageTest {
+                background-image: url('images/back.jpg');
+                filter: blur(5px);
+                -webkit-filter: blur(5px);
+                -moz-filter: blur(5px);
+                -o-filter: blur(5px);
+                -ms-filter: blur(5px);
+                height: 100%;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+
+            .gridTest {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -40%);
+                z-index: 2;
+                width: 80%;
+                padding: 20px;
+                text-align: center;
+            }
+        </style>
         <link rel="stylesheet" type="text/css" href="tableTempStyles.css">
         <script src="../webjars/jquery/jquery.min.js"></script>
         <script src="../webjars/sockjs-client/sockjs.min.js"></script>
@@ -10,7 +39,6 @@
         <script src="../app2.js"></script>
     </head>
     <body>
-
         <div class="header">
             <ul class="navBar">
                 <li><h1><a href="UserHomeScreen.html" style="text-decoration: none; color: inherit">MyHost</a></h1></li>
@@ -19,7 +47,14 @@
             </ul>
         </div>
 
-        <div class="grid-container">
+        <br>
+        <br>
+        <div class="imageTest"></div>
+
+        <div class="gridTest">
+            <br>
+            <br>
+            <div class="grid-container">
             <div class="item1">
                 <h3 id="tableDisplay">N/A Table</h3>
                 <h4 id="queueTime">Queue Time: N/A</h4>
@@ -53,6 +88,8 @@
             <div class="item5">
                 <button class="button tempTable" id="No" onclick="goBack()">I've changed my mind!</button>
             </div>
+        </div>
+
         </div>
 
         <script>
@@ -126,8 +163,9 @@
 
                 var replyArray = response.split(":");
 
+                //Adding 45 minutes per group in queue plus 45 min for currently seated group
                 if (replyArray[2] > 0) {
-                    var time = replyArray[2] * 45.00;
+                    var time = (replyArray[2] * 45.00) + 45.00;
                     if (time >= 60) {
                         var adjustTime = time / 60.00;
                         time = adjustTime;
@@ -136,8 +174,25 @@
                     document.getElementById("queueTime").innerHTML = "Current Wait: " + time + " hrs.";
                     document.getElementById("queueTotal").innerHTML = "Groups in Queue: " + replyArray[2];
                 } else {
-                    document.getElementById("queueTime").innerHTML = "Current Wait: Available";
-                    document.getElementById("queueTotal").innerHTML = "Groups in Queue: " + replyArray[2];
+
+                    //Checking if table has a group already seated not in queue
+                    var tableSeated = "isFree:table:" + tableID;
+                    sendRequest(tableSeated);
+
+                    while (response == null) {
+                      await new Promise(r => setTimeout(r, 100));
+                    }
+
+                    console.log("[1]: " + response);
+                    var responseArray = response.split(":");
+
+                    if(responseArray[2].includes("false")){
+                        document.getElementById("queueTime").innerHTML = "Current Wait: 45 min.";
+                        document.getElementById("queueTotal").innerHTML = "Groups in Queue: " + replyArray[2];
+                    }else{
+                        document.getElementById("queueTime").innerHTML = "Current Wait: Available";
+                        document.getElementById("queueTotal").innerHTML = "Groups in Queue: " + replyArray[2];
+                    }
                 }
             }
 
@@ -149,10 +204,16 @@
                 var number = document.forms["reservation"]["phoneNumber"].value;
                 var partySize = document.forms["reservation"]["partySize"].value;
                 var optIN = "n/a";
+                var restaurant = sessionStorage.getItem("restaurant");
 
                 //Making sure fields are not null
                 if(name === "" || number === "" || partySize === ""){
                     document.getElementById("No").setAttribute("disabled");
+                }else if(partySize > document.forms["reservation"]["partySize"].max){
+                    alert("Party size can not be more than max amount of seats.");
+                    document.getElementById("No").setAttribute("disabled");
+                }else{
+
                 }
 
                 if(document.forms["reservation"]["optIn"].checked){
@@ -170,6 +231,10 @@
                     await new Promise(r => setTimeout(r, 100));
                 }
                 console.log("[5]: " + response);
+
+                //Session storage information
+                var reserveInfo = name + ":" + tableID + ":" + number + ":" + partySize + ":" + restaurant;
+                sessionStorage.setItem("resInfo", reserveInfo);
 
                 alert("Reservation confirmed!");
                 location.href = "UserHomeScreen.html";

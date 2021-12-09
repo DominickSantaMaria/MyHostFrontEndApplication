@@ -48,29 +48,34 @@
 
 <script>
     let listItems = document.querySelectorAll('.btns li');
-
+    // checks for events
     listItems.forEach((item, index) => {
         item.addEventListener('click', (event) => {
+            // If user tries to login info from text boxes is sent to backend login function
             if (event.currentTarget.innerHTML == "Login") {
                 //alert(`${event.currentTarget.innerHTML} item was click`);
                 sendLoginDetails();
                 // NEED TO ACTUALLY CODE LOGIN DETAILS
             }
+            // if user clicks take me back they are taken back to homepage
             if (event.currentTarget.innerHTML == "Take Me Back") {
                 //alert(`${event.currentTarget.innerHTML} item was click`);
                 window.location = "home.html"     // TAKE BACK TO HOME PAGE
             }
         });
     });
-
+    // Login function for MyHost login.HTML
     async function sendLoginDetails() {
         // [1]
+        // Checks document for users login information
         sendRequest("testLogin:"+document.getElementsByName('uname')[0].value+":"+document.getElementsByName('psw')[0].value);
+        // waiting for response
         while (response == null) {
             await new Promise(r => setTimeout(r, 100));
         }
         var splitResponse = response.split(":");
         console.log("[1]: " + response);
+        // if info is found user is able to proceed to User Homescreen
         if (response == "testLogin:passed") {
             window.location = "UserHomeScreen.html"
         } else {

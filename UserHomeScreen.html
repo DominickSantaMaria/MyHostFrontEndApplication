@@ -15,6 +15,12 @@
   border: 2px solid #FB8064;
   height: 500px; 
 }
+.activeResBtn {
+  float: middle;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+}
 
 /* Clear floats after the columns */
 .row:after {
@@ -58,6 +64,17 @@ p {text-align: center;}
   display:inline-block;
   text-align:center;
   }
+  .btn-groupActiveRes button {
+  background-color: white; 
+  border: 1px solid #FB8064; 
+  color: black; 
+  padding: 10px 24px; 
+  cursor: pointer; 
+  width: 50%; 
+  display: block; 
+  display:inline-block;
+  text-align:center;
+  }
 .btn-group button:not(:last-child) {
   border-bottom: none; /* Prevent double borders */
 }
@@ -91,12 +108,38 @@ p {text-align: center;}
     text-align:center;
     background-color: #fde1d8;
 }
-.textcenter{
-    text-align:center;
+
+.res{
+    padding: 20px;
+    background-color: antiquewhite;
+    border: solid 2px #FB8064;
+    border-radius: 5px;
 }
+
+<!--.cancelBtn {-->
+    padding: 8px;
+    background-color: #FE542D;
+    color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    margin-top: 10px;
+}
+
 * {
   box-sizing: border-box;
 }
+.btn-activeRes, .btn-groupPrev{
+    text-align:center;
+}
+div.btn-group button, div.btn-groupPrev button, div.btn-groupActiveRes button, .cancelBtn{
+    padding: 8px;
+    margin-bottom: 7px;
+    background-color: #FE542D;
+    color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+
+
 </style>
 </head>
 <body>
@@ -131,7 +174,7 @@ p {text-align: center;}
 
   <div class="column" style="background-color:#c4aead;">
     <h2 class=header1>Current Reservations</h2>
-    <p class=textcenter>No reservations made yet!</p>
+    <p class=textcenter><div class="res" id="res">No reservations made yet!</div></p>
   </div>
 
   <div class="column" style="background-color:#c4aead;">
@@ -147,17 +190,67 @@ p {text-align: center;}
   </div>
 
   </div>
+  <br>
+  <div class="btn-groupActiveRes" style="text-align: center;">
+    <button style=" bottom:10; text-align:center; width:120px">Active Reservations</button>
+</div>
 
 
          <script>
+
+        window.onload = function () {
+            var reservation = sessionStorage.getItem("resInfo");
+            console.log(reservation);
+
+            reservationSetUp(reservation);
+
+            //Uncomment when ready to tell poll function for isReady, polling works
+            //setTimeout(refreshTime, 30000);
+        }
+
+        function reservationSetUp(reservation){
+            var test = document.getElementById("res");
+
+            //String received looks like --> Name : Table ID : Phone Num : Party Size : Restaurant Name
+            var resArray = reservation.split(":");
+            var queueTime = "N/A";
+
+            var resDisplay = "<b>" + resArray[4] + "</b><br>" +
+            "Group Name: " + resArray[0] + "<br>" +
+            "Group Size: " + resArray[3] + "<br>" +
+            "Queue Time: " + queueTime + "<br>" +
+            "<button class='cancelBtn' onclick='cancelFunc'>Cancel Reservation</button>";
+
+            test.innerHTML = resDisplay;
+        }
+
+        function cancelFunc() {
+            alert("Cancel test");
+        }
+
+        //Polling function for updates
+        function refreshTime(){
+            console.log("It's been 5 seconds!");
+            setTimeout(refreshTime, 30000);
+        }
+
         let restaurants = document.querySelectorAll('.btn-group button');
 
         restaurants.forEach((item, index) => {
             item.addEventListener('click', (event) => {
+                var restaurant = item.innerHTML;
+                sessionStorage.setItem("restaurant", restaurant);
                 window.location = "tablemap.html";
             });
         });
 
+          let activeReservations1 = document.querySelectorAll('.btn-groupActiveRes button');
+
+        activeReservations1.forEach((item, index) => {
+            item.addEventListener('click', (event) => {
+                window.location = "ActiveReservations.html";
+            });
+        });
     </script>
 
 </body>

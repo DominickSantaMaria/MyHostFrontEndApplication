@@ -49,18 +49,29 @@ a wait time and number of groups ahead of you in queue for a specific table
 socket to finish. 
 3. Added reservation creation code for creating group that will be added to queue with necessary information.
 
+07-08 Dec 2021:
+1. Added background image to tableTemplate and formatted background for Active Reservations
+2. Created session storage item on tableTemplate to send to User Home Page to display
+3. Create code to parse information set by session storage item to display to user (their current reservation)
+4. Set up test polling function on user home page to check for reservation updates.
+5. Added cancel button for reservation
+6. Adjusted validation for user entering number higher than max seats for table
+7. Restaurant name changes depending on what button is pressed
+
 -----------------------------------------------
 # Completed Steps:
 1. Organize and develop created home screen
 2. Figure out how to make interactive pages for the table configurations / choose table in restaurant
 3. Create booking screen for restaurant
 4. Created test functions for socket string parsing for some of the html pages
+5. Work on functions in tableTemplate.html for confirming group reservation to send to server.
+6. Clean up User Home Screen, fix font discrepancy 
 
 # Next Steps:
 <<<<<<< HEAD
-1. Work out client-server requests for smooth transition of connecting backend to frontend: **In progress**
-2. Work on functions in tableTemplate.html for confirming group reservation to send to server. **In progress**
-3. Clean up User Home Screen, fix font discrepancy 
+1. Work out client-server requests for smooth transition of connecting backend to frontend: **Completed, finishing testing**
+2. Adjust background images for pages **In Progress**
+3. Format current reservation with queue time on UserHomePage **InProgress**
 
 #On Hold Steps:
 1. Create web notification that a different table is available: **Canceled --> Automatically change table is opt in**
