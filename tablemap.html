@@ -150,6 +150,9 @@
                 connect();
 
                 document.getElementById("resName").innerHTML = name;
+
+                //Starting polling function to update map periodically
+                setTimeout(refreshMap, 5000);
             }
 
             const cornerBooths = document.getElementsByClassName('cornerBooth');
@@ -207,6 +210,13 @@
 
             function goBack() {
                 window.location = "UserHomeScreen.html";
+            }
+
+            //Timeout function to refresh table map
+            async function refreshMap(){
+                refresh();
+                console.log("It's been 5 seconds, updating map...");
+                setTimeout(refreshMap, 5000);
             }
 
             //Function for fetching table availability

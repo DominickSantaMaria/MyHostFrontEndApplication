@@ -146,7 +146,7 @@ div.btn-group button, div.btn-groupPrev button, div.btn-groupActiveRes button, .
     <div class="header">
         <ul class="navBar">
             <li><h1><a href="UserHomeScreen.html" style="text-decoration: none; color: inherit">MyHost</a></h1></li>
-            <li style="float:right"><button class="headerButton" type=button><a href="Admin/adminHomePage.html" style="text-decoration: none; color: inherit" align="right">Admin View</a></button></li>
+            <li style="float:right"><button class="headerButton" type=button><a href="Admin/adminHomePage.html" style="text-decoration: none; color: inherit" align="right">Admin View (Beta)</a></button></li>
             <li style="float:right"><button class="headerButton" type=button><a href="home.html" style="text-decoration: none; color: inherit" align="right">Logout</button></a> </li>
             <li style="float:right"><button class="headerButton" type=button><a href="account.html" style="text-decoration: none; color: inherit"align="right">Account</button></a></li>
         </ul>
@@ -220,7 +220,7 @@ div.btn-group button, div.btn-groupPrev button, div.btn-groupActiveRes button, .
             "Group Name: " + resArray[0] + "</p><p class='info'>" +
             "Group Size: " + resArray[3] + "</p><p class='info' id='queueTime'>" +
             "Queue Time: " + queueTime + "</p>" +
-            "<button class='cancelBtn' onclick='cancelFunc'>Cancel Reservation</button>";
+            "<button class='cancelBtn' onclick='cancelFunc()'>Cancel Reservation</button>";
 
             test.innerHTML = resDisplay;
         }
