@@ -57,6 +57,7 @@ socket to finish.
 5. Added cancel button for reservation
 6. Adjusted validation for user entering number higher than max seats for table
 7. Restaurant name changes depending on what button is pressed
+8. Updated UserHomePage to send request to backend to update queue wait time and display reply
 
 -----------------------------------------------
 # Completed Steps:

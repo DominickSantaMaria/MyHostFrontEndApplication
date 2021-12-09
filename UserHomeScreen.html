@@ -2,6 +2,10 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../webjars/jquery/jquery.min.js"></script>
+    <script src="../webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="../webjars/stomp-websocket/stomp.min.js"></script>
+    <script src="../app2.js"></script>
 <style>
 * {
   box-sizing: border-box;
@@ -116,14 +120,6 @@ p {text-align: center;}
     border-radius: 5px;
 }
 
-<!--.cancelBtn {-->
-    padding: 8px;
-    background-color: #FE542D;
-    color: #ffffff;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    margin-top: 10px;
-}
-
 * {
   box-sizing: border-box;
 }
@@ -138,6 +134,10 @@ div.btn-group button, div.btn-groupPrev button, div.btn-groupActiveRes button, .
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
+.info {
+    text-align: left;
+    padding: 0px;
+}
 
 
 </style>
@@ -174,7 +174,7 @@ div.btn-group button, div.btn-groupPrev button, div.btn-groupActiveRes button, .
 
   <div class="column" style="background-color:#c4aead;">
     <h2 class=header1>Current Reservations</h2>
-    <p class=textcenter><div class="res" id="res">No reservations made yet!</div></p>
+    <p><div class="res" id="res">No reservations made yet!</div></p>
   </div>
 
   <div class="column" style="background-color:#c4aead;">
@@ -199,13 +199,14 @@ div.btn-group button, div.btn-groupPrev button, div.btn-groupActiveRes button, .
          <script>
 
         window.onload = function () {
+            connect();
             var reservation = sessionStorage.getItem("resInfo");
             console.log(reservation);
 
             reservationSetUp(reservation);
 
             //Uncomment when ready to tell poll function for isReady, polling works
-            //setTimeout(refreshTime, 30000);
+            setTimeout(refreshTime, 30000);
         }
 
         function reservationSetUp(reservation){
@@ -215,10 +216,10 @@ div.btn-group button, div.btn-groupPrev button, div.btn-groupActiveRes button, .
             var resArray = reservation.split(":");
             var queueTime = "N/A";
 
-            var resDisplay = "<b>" + resArray[4] + "</b><br>" +
-            "Group Name: " + resArray[0] + "<br>" +
-            "Group Size: " + resArray[3] + "<br>" +
-            "Queue Time: " + queueTime + "<br>" +
+            var resDisplay = "<p class='info'><b>" + resArray[4] + "</b></p><p class='info'>" +
+            "Group Name: " + resArray[0] + "</p><p class='info'>" +
+            "Group Size: " + resArray[3] + "</p><p class='info' id='queueTime'>" +
+            "Queue Time: " + queueTime + "</p>" +
             "<button class='cancelBtn' onclick='cancelFunc'>Cancel Reservation</button>";
 
             test.innerHTML = resDisplay;
@@ -229,9 +230,44 @@ div.btn-group button, div.btn-groupPrev button, div.btn-groupActiveRes button, .
         }
 
         //Polling function for updates
-        function refreshTime(){
-            console.log("It's been 5 seconds!");
+        async function refreshTime(){
+            console.log("It's been 30 seconds!");
+
+            //String received looks like --> Name : Table ID : Phone Num : Party Size : Restaurant Name
+            var reservation = sessionStorage.getItem("resInfo");
+            isReady(reservation);
+
             setTimeout(refreshTime, 30000);
+        }
+
+        async function isReady(reservation){
+            //Input to server --> "isReadyYet:Name:phoneNumber:groupSize"
+            //Output from server --> "isReadyYet:true/false:tableNum:position"
+            var resArray = reservation.split(":");
+            var readyRequest = "isReadyYet:" + resArray[0] + ":" + resArray[2] + ":" + resArray[3];
+
+            sendRequest(readyRequest);
+            while (response == null) {
+                await new Promise(r => setTimeout(r, 100));
+            }
+            console.log("[8]: " + response);
+
+            var replyArray = response.split(":");
+
+            var queueDisplay = document.getElementById("queueTime");
+            if(replyArray[1].includes("true")){
+                queueDisplay.innerHTML = "Your table is ready!";
+            }else if(replyArray[1].includes("false") && replyArray[3] == 1){
+                queueDisplay.innerHTML = "Queue Time: 45 minutes (You're next!)";
+            }else{
+                var time = (replyArray[3] * 45.00) + 45.00;
+                if (time >= 60) {
+                    var adjustTime = time / 60.00;
+                    time = adjustTime;
+                }
+
+                queueDisplay.innerHTML = "Queue Time: " + time + " hrs.";
+            }
         }
 
         let restaurants = document.querySelectorAll('.btn-group button');
