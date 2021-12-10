@@ -258,13 +258,13 @@ div.btn-group button, div.btn-groupPrev button, div.btn-groupActiveRes button, .
 
         //Polling function for updates
         async function refreshTime(){
-            console.log("It's been 30 seconds!");
+            console.log("It's been 10 seconds!");
 
             //String received looks like --> Name : Table ID : Phone Num : Party Size : Restaurant Name
             var reservation = sessionStorage.getItem("resInfo");
             isReady(reservation);
 
-            setTimeout(refreshTime, 30000);
+            setTimeout(refreshTime, 10000);
         }
 
         async function isReady(reservation){
@@ -283,7 +283,7 @@ div.btn-group button, div.btn-groupPrev button, div.btn-groupActiveRes button, .
 
             var queueDisplay = document.getElementById("queueTime");
             if(replyArray[1].includes("true")){
-                queueDisplay.innerHTML = "Your table is ready!";
+                queueDisplay.innerHTML = "Your table is ready! Got to table " + replyArray[2];
             }else if(replyArray[1].includes("false") && replyArray[3] == 1){
                 queueDisplay.innerHTML = "Queue Time: 45 minutes (You're next!)";
             }else{
